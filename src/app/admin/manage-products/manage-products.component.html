@@ -1,0 +1,88 @@
+<div class="manage-products-container py-5 mt-4">
+    <div class="container">
+        <!-- Header -->
+        <div class="row mb-5 align-items-center">
+            <div class="col-md-6">
+                <nav aria-label="breadcrumb">
+                    <ol class="breadcrumb mb-2">
+                        <li class="breadcrumb-item"><a routerLink="/admin/dashboard" class="text-decoration-none"
+                                style="color: #144d37;">Dashboard</a></li>
+                        <li class="breadcrumb-item active">Products</li>
+                    </ol>
+                </nav>
+                <h2 class="fw-bold mb-0" style="color: #1e293b;">Inventory <span
+                        style="color: #144d37;">Management</span></h2>
+            </div>
+            <div class="col-md-6 text-md-end mt-4 mt-md-0">
+                <button routerLink="/admin/add-product"
+                    class="btn btn-add-product shadow-sm px-4 py-2 rounded-pill fw-bold">
+                    <i class="bi bi-plus-lg me-2"></i> ADD NEW PRODUCT
+                </button>
+            </div>
+        </div>
+
+        <!-- Loading State -->
+        <div *ngIf="loading" class="text-center py-5">
+            <div class="spinner-border" style="color: #144d37;" role="status"></div>
+            <p class="mt-3 text-muted">Organizing your inventory...</p>
+        </div>
+
+        <!-- Grouped Products -->
+        <div *ngIf="!loading">
+            <div *ngFor="let group of groupedProducts" class="mb-5">
+                <div class="category-header d-flex align-items-center mb-4 p-3 rounded-4 shadow-sm bg-white">
+                    <div class="category-icon p-2 bg-gradient-green text-white rounded-3 me-3">
+                        <i class="bi bi-tag-fill fs-5"></i>
+                    </div>
+                    <div>
+                        <h5 class="fw-bold mb-0 text-dark">{{group.category}}</h5>
+                        <small class="text-muted">{{group.items.length}} Products in this category</small>
+                    </div>
+                </div>
+
+                <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 row-cols-xl-4 g-4">
+                    <div class="col" *ngFor="let p of group.items">
+                        <div class="card h-100 border-0 shadow-sm rounded-4 product-admin-card overflow-hidden">
+                            <div class="position-relative">
+                                @if (p.imageUrl) {
+                                <img [src]="'http://localhost:3000/uploads/' + p.imageUrl" class="card-img-top"
+                                    alt="{{ p.productName }}" style="height: 180px; object-fit: cover" />
+                                } @else {
+                                <div class="bg-light d-flex align-items-center justify-content-center"
+                                    style="height: 180px;">
+                                    <i class="bi bi-image text-muted fs-1"></i>
+                                </div>
+                                }
+                                <div class="availability-badge" [class.out-of-stock]="!p.availability">
+                                    {{p.availability ? 'In Stock' : 'Out of Stock'}}
+                                </div>
+                            </div>
+                            <div class="card-body p-4">
+                                <h6 class="fw-bold mb-1 text-truncate" style="color: #1e293b;">{{p.productName}}</h6>
+                                <p class="text-success fw-bold fs-5 mb-3">Rs. {{p.price}}</p>
+
+                                <div class="d-flex gap-2 border-top pt-3 mt-auto">
+                                    <button [routerLink]="['/admin/edit-product', p._id]"
+                                        class="btn btn-outline-primary rounded-pill flex-fill btn-sm fw-bold">
+                                        <i class="bi bi-pencil me-1"></i> EDIT
+                                    </button>
+                                    <button (click)="deleteProduct(p._id!)"
+                                        class="btn btn-outline-danger rounded-pill flex-fill btn-sm fw-bold">
+                                        <i class="bi bi-trash me-1"></i> DELETE
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div *ngIf="groupedProducts.length === 0" class="text-center py-5 bg-white rounded-4 shadow-sm">
+                <i class="bi bi-box-seam display-1 text-muted opacity-25"></i>
+                <p class="mt-3 lead text-muted">No products found in your inventory.</p>
+                <button routerLink="/admin/add-product" class="btn btn-success rounded-pill px-4 mt-3">Start Adding
+                    Products</button>
+            </div>
+        </div>
+    </div>
+</div>

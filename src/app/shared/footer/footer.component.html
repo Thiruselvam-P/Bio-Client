@@ -1,0 +1,61 @@
+<footer class="scenic-footer">
+  <div class="footer-overlay">
+    <div class="container">
+
+      <!-- 🟢 TOP BANNER SECTION -->
+      <div class="row align-items-center mb-3 pb-2">
+        <div class="col-lg-9">
+          <h2 class="banner-text text-white fw-bold">FRESH BIO IS COMMITTED TO ENVIRONMENTAL RESPONSIBILITY.</h2>
+        </div>
+        <div class="col-lg-3 text-lg-end mt-4 mt-lg-0">
+          <a routerLink="/contact" class="btn contact-pill-btn px-4 py-2">Contact Form</a>
+        </div>
+      </div>
+
+      <!-- ⚪ MAIN CONTENT COLUMNS -->
+      <div class="row gy-5 mt-2">
+
+        <!-- ADDRESS COLUMN -->
+        <div class="col-lg-3 col-md-6">
+          <div class="footer-brand-section">
+            <img src="logofin.png" alt="MJ Fresh Bio" class="footer-logo mb-4">
+            <h6 class="text-white fw-bold small-title mb-3">ADDRESS</h6>
+            <p class="address-text text-white-50 small lh-base">
+              N-161, Saira Tower,<br>
+              G.F, Gautam Nagar Near Green Park Metro Station<br>
+              Gate NO.2 Delhi, South Delhi DL 110049.
+            </p>
+          </div>
+        </div>
+
+        <!-- COMPANY COLUMN -->
+        <div class="col-lg-3 col-md-6">
+          <h6 class="footer-group-title">COMPANY</h6>
+          <ul class="list-unstyled modern-links mt-4">
+            <li *ngFor="let link of companyLinks" class="mb-3">
+              <a [routerLink]="link.path" class="scenic-link">{{ link.label }}</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- SHOP CATEGORIES COLUMN -->
+        <div class="col-lg-3 col-md-6">
+          <h6 class="footer-group-title">SHOP CATEGORIES</h6>
+          <ul class="list-unstyled modern-links mt-4">
+            <li *ngFor="let link of shopLinks" class="mb-3">
+              <a [routerLink]="link.path" class="scenic-link">{{ link.label }}</a>
+            </li>
+          </ul>
+        </div>
+
+        <!-- COPYRIGHT COLUMN -->
+        <div class="col-lg-3 col-md-6">
+          <h6 class="footer-group-title">Copyright © 2025 <span class="text-success">Fresh Bio</span></h6>
+          <p class="text-white-50 mt-4 small">All rights reserved.</p>
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+</footer>

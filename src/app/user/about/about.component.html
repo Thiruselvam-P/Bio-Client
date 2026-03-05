@@ -1,0 +1,199 @@
+<!-- HERO BANNER -->
+<section class="about-hero">
+    <div class="about-hero-overlay">
+        <div class="container text-center text-white py-5">
+            <span class="hero-eyebrow">EST. 2018 · INDIA</span>
+            <h1 class="hero-title">About <span class="highlight">MJ Fresh Bio</span></h1>
+            <p class="hero-sub">Rooted in nature. Committed to you. Driven by purpose.</p>
+        </div>
+    </div>
+</section>
+
+<!-- BREADCRUMB -->
+<div class="bg-light py-3 border-bottom">
+    <div class="container">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb mb-0 small fw-semibold">
+                <li class="breadcrumb-item"><a routerLink="/home" class="text-success text-decoration-none">Home</a>
+                </li>
+                <li class="breadcrumb-item active text-muted">About Us</li>
+            </ol>
+        </nav>
+    </div>
+</div>
+
+<!-- OUR STORY SECTION -->
+<section class="py-5 my-4">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <div class="story-img-wrap position-relative">
+                    <img src="freshhome1.jpg" class="img-fluid rounded-5 w-100 story-img"
+                        style="max-height:500px; object-fit:cover;" alt="Our Story">
+
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="ps-lg-4">
+                    <span class="section-eyebrow">Our Story</span>
+                    <h2 class="section-title">Where It All Began</h2>
+                    <p class="text-muted lh-lg mb-4">
+                        MJ Fresh Bio was born from a deep love for the land and an even deeper concern for what ends up
+                        on your table.
+                        Founded in 2018, we started as a small collective of farmers and eco-enthusiasts who believed
+                        that sustainable
+                        agriculture was not just a choice — it was a responsibility.
+                    </p>
+                    <p class="text-muted lh-lg mb-4">
+                        Today, we source directly from trusted organic farms across India, bringing you the freshest
+                        kitchenware,
+                        millets, drinkware, and eco-friendly tableware — all without a single synthetic chemical in
+                        sight.
+                        Every product carries our promise: <strong class="text-dark">pure origins, transparent
+                            practices, and love for the planet.</strong>
+                    </p>
+                    <div class="d-flex gap-4 mt-2">
+                        <div class="text-center">
+                            <h3 class="fw-bold mb-0" style="color: #144d37;">200+</h3>
+                            <small class="text-muted">Products</small>
+                        </div>
+                        <div class="text-center">
+                            <h3 class="fw-bold mb-0" style="color: #144d37;">5000+</h3>
+                            <small class="text-muted">Happy Customers</small>
+                        </div>
+                        <div class="text-center">
+                            <h3 class="fw-bold mb-0" style="color: #144d37;">50+</h3>
+                            <small class="text-muted">Farm Partners</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- MISSION & VISION STRIP -->
+<section class="mv-section py-5">
+    <div class="container">
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="mv-card h-100 p-5">
+                    <div class="mv-icon mb-4">
+                        <i class="bi bi-eye"></i>
+                    </div>
+                    <h3 class="fw-bold text-dark mb-3">Our Vision</h3>
+                    <p class="text-muted lh-lg">
+                        To be India's most trusted platform for organic food and eco-friendly living — where every
+                        purchase
+                        contributes to a healthier planet, stronger farming communities, and a toxin-free future for
+                        generations to come.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="mv-card mv-card-accent h-100 p-5">
+                    <div class="mv-icon mb-4">
+                        <i class="bi bi-bullseye"></i>
+                    </div>
+                    <h3 class="fw-bold text-white mb-3">Our Mission</h3>
+                    <p class="lh-lg" style="color: rgba(255,255,255,0.85);">
+                        To make organic, sustainable products accessible and affordable for every Indian household —
+                        directly from farm to doorstep — while supporting local farmers and eliminating harmful
+                        packaging from our ecosystem.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CORE VALUES -->
+<section class="py-5 my-4">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="section-eyebrow">What We Stand For</span>
+            <h2 class="section-title">Our Core Values</h2>
+        </div>
+        <div class="row g-4">
+            <div class="col-md-4" *ngFor="let val of coreValues">
+                <div class="flip-card">
+                    <div class="flip-card-inner">
+                        <div class="flip-card-front">
+                            <div class="value-icon">
+                                <i [class]="val.icon"></i>
+                            </div>
+                            <h5 class="fw-bold mb-0 text-dark">{{ val.title }}</h5>
+                        </div>
+                        <div class="flip-card-back">
+                            <h5 class="fw-bold mb-3">{{ val.title }}</h5>
+                            <p class="small lh-lg mb-0 text-white">{{ val.desc }}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- WHAT WE OFFER -->
+<section class="offer-section py-5">
+    <div class="container">
+        <div class="text-center mb-5">
+            <span class="section-eyebrow">Our Offerings</span>
+            <h2 class="section-title">From Nature, For You</h2>
+        </div>
+        <div class="row g-4">
+            <div class="col-6 col-md-3" *ngFor="let offer of offerings">
+                <div class="offer-card">
+                    <div class="offer-img-wrap">
+                        <img [src]="offer.img" class="offer-img" [alt]="offer.title">
+                    </div>
+                    <div class="offer-content">
+                        <h6 class="offer-title">{{ offer.title }}</h6>
+                        <p class="offer-desc">{{ offer.desc }}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- COMMITMENT STRIP -->
+<section class="commitment-strip py-5 my-5">
+    <div class="container">
+        <div class="row align-items-center g-5">
+            <div class="col-lg-6">
+                <span class="section-eyebrow text-white opacity-75">Our Pledge</span>
+                <h2 class="text-white fw-bold display-6 mb-4">A Commitment to <br><span class="highlight-white">Zero
+                        Harm</span></h2>
+                <ul class="commitment-list text-white">
+                    <li><i class="bi bi-check-circle-fill text-success me-2"></i> 100% chemical-free, certified organic
+                        produce</li>
+                    <li><i class="bi bi-check-circle-fill text-success me-2"></i> Biodegradable and compostable
+                        packaging only</li>
+                    <li><i class="bi bi-check-circle-fill text-success me-2"></i> Direct payments to farmers — no
+                        middlemen</li>
+                    <li><i class="bi bi-check-circle-fill text-success me-2"></i> Cold-chain logistics to preserve
+                        freshness</li>
+                    <li><i class="bi bi-check-circle-fill text-success me-2"></i> Carbon-conscious delivery operations
+                    </li>
+                </ul>
+            </div>
+            <div class="col-lg-6">
+                <img src="about-us1.jpg" class="img-fluid rounded-5 shadow-lg w-100"
+                    style="max-height:450px; object-fit:cover;" alt="Our Commitment">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="py-5 text-center bg-light">
+    <div class="container">
+        <h2 class="fw-bold mb-3" style="color: #1a293b;">Ready to Live <span style="color:#144d37;">Greener?</span></h2>
+        <p class="text-muted lead mb-4">Explore our full range of organic products and eco-friendly essentials.</p>
+        <a routerLink="/products" class="btn btn-success px-5 py-3 rounded-pill fw-bold shadow-sm me-3">Shop Now</a>
+        <a routerLink="/contact" class="btn btn-outline-success px-5 py-3 rounded-pill fw-bold">Contact Us</a>
+    </div>
+</section>

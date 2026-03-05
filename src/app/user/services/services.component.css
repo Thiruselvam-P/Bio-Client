@@ -1,0 +1,177 @@
+/* ===== PAGE WRAPPER ===== */
+.svc-page {
+  background: #fff;
+  padding: 80px 0 100px;
+}
+
+/* ===== HEADER ===== */
+.svc-eyebrow {
+  display: inline-block;
+  font-size: 0.75rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: #2f8f77;
+  font-weight: 700;
+  background: rgba(47, 143, 119, 0.09);
+  padding: 6px 20px;
+  border-radius: 50px;
+  margin-bottom: 16px;
+}
+
+.svc-main-title {
+  font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 900;
+  color: #1a293b;
+  margin-bottom: 14px;
+  line-height: 1.15;
+}
+
+.svc-main-title span {
+  color: #144d37;
+}
+
+.svc-sub {
+  font-size: 1rem;
+  color: #64748b;
+  max-width: 540px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* ===== BASE CARD ===== */
+.svc-card {
+  border-radius: 28px;
+  padding: 40px 32px 32px;
+  position: relative;
+  overflow: hidden;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  border: none;
+  transition: transform 0.35s cubic-bezier(0.165, 0.84, 0.44, 1),
+    box-shadow 0.35s ease;
+  cursor: pointer;
+}
+
+.svc-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.16);
+}
+
+/* ===== GHOST NUMBER ===== */
+.svc-num {
+  position: absolute;
+  top: 16px;
+  right: 24px;
+  font-size: 5rem;
+  font-weight: 900;
+  line-height: 1;
+  opacity: 0.12;
+  color: #fff;
+  user-select: none;
+  transition: opacity 0.3s ease;
+}
+
+.svc-card:hover .svc-num {
+  opacity: 0.2;
+}
+
+/* ===== ICON BOX ===== */
+.svc-icon-box {
+  width: 64px;
+  height: 64px;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.8rem;
+  color: #fff;
+  margin-bottom: 24px;
+  backdrop-filter: blur(4px);
+  transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.svc-card:hover .svc-icon-box {
+  background: rgba(255, 255, 255, 0.35);
+  transform: scale(1.1) rotate(-5deg);
+}
+
+/* ===== TEXT ===== */
+.svc-title {
+  font-size: 1.15rem;
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.svc-desc {
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.7;
+  flex-grow: 1;
+  margin-bottom: 28px;
+}
+
+/* ===== CTA LINK ===== */
+.svc-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: #fff;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  border: 2px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50px;
+  padding: 8px 20px;
+  width: fit-content;
+  margin-top: auto;
+  transition: all 0.25s ease;
+}
+
+.svc-cta:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-color: #fff;
+  color: #fff;
+  gap: 10px;
+}
+
+/* ===== INDIVIDUAL CARD COLOURS ===== */
+
+/* 1 — Forest Green */
+.card-1 {
+  background: linear-gradient(135deg, #144d37 0%, #2f8f77 100%);
+  box-shadow: 0 12px 40px rgba(20, 77, 55, 0.25);
+}
+
+/* 2 — Ocean Teal */
+.card-2 {
+  background: linear-gradient(135deg, #0d6e8a 0%, #1bb5c8 100%);
+  box-shadow: 0 12px 40px rgba(13, 110, 138, 0.25);
+}
+
+/* 3 — Amber Sunrise */
+.card-3 {
+  background: linear-gradient(135deg, #c06b00 0%, #f09d00 100%);
+  box-shadow: 0 12px 40px rgba(192, 107, 0, 0.25);
+}
+
+/* 4 — Earthy Brown */
+.card-4 {
+  background: linear-gradient(135deg, #5c3317 0%, #a0643d 100%);
+  box-shadow: 0 12px 40px rgba(92, 51, 23, 0.25);
+}
+
+/* 5 — Indigo Sky */
+.card-5 {
+  background: linear-gradient(135deg, #3730a3 0%, #6366f1 100%);
+  box-shadow: 0 12px 40px rgba(55, 48, 163, 0.25);
+}
+
+/* 6 — Rose Earth */
+.card-6 {
+  background: linear-gradient(135deg, #9d174d 0%, #ec4899 100%);
+  box-shadow: 0 12px 40px rgba(157, 23, 77, 0.25);
+}

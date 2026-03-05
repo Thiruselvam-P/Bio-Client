@@ -1,0 +1,217 @@
+<div class="container my-5">
+  <!-- HEADER -->
+  <div
+    class="text-center text-white p-5 mb-5 rounded-4 shadow"
+    style="background: linear-gradient(90deg, #2c364a, #20c997)"
+  >
+    <h2 class="fw-bold mb-2">Contact Fresh Bio India</h2>
+    <p class="mb-0">
+      Get in touch with us for product enquiries, bulk orders, dealership
+      opportunities, or sustainability partnerships.
+    </p>
+  </div>
+
+  <div class="row g-4">
+    <!-- CONTACT DETAILS -->
+    <div class="col-md-5">
+      <div
+        class="position-relative shadow-lg rounded-4 overflow-hidden h-100"
+        style="background-color: #ffffff"
+      >
+        <!-- LEFT ACCENT BAR -->
+        <div
+          style="
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 10px;
+            height: 100%;
+            background: linear-gradient(180deg, #198754, #20c997);
+          "
+        ></div>
+
+        <div class="p-4 ps-5">
+          <!-- TITLE -->
+          <div class="mb-4">
+            <span
+              class="badge rounded-pill px-4 py-2 shadow-sm"
+              style="background-color: #198754; font-size: 0.95rem"
+            >
+              ☎ OFFICIAL FRESH BIO CONTACT DETAILS
+            </span>
+          </div>
+
+          <!-- HEAD OFFICE -->
+          <!-- <div class="p-3 mb-3 rounded-3 bg-light">
+            <div class="d-flex align-items-start gap-3">
+              <div class="fs-4 text-success">📍</div>
+              <div>
+                <h6 class="fw-bold mb-1">Head Office</h6>
+                <p class="mb-0 small text-muted">
+                  180, Masoodpur, Vasant Kunj,<br />
+                  New Delhi – 110070.
+                </p>
+              </div>
+            </div>
+          </div> -->
+
+          <!-- BRANCH OFFICE -->
+          <div class="p-3 mb-3 rounded-3 bg-light">
+            <div class="d-flex align-items-start gap-3">
+              <div class="fs-4 text-success">🏢</div>
+              <div>
+                <h6 class="fw-bold mb-1">Offline Office</h6>
+                <p class="mb-0 small text-muted">
+                  1st Street, Varanapuram,<br />
+                  Erode, Tamil Nadu – 638301.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- PHONE -->
+          <div class="p-3 mb-3 rounded-3 bg-light">
+            <div class="d-flex align-items-start gap-3">
+              <div class="fs-4 text-success">☎</div>
+              <div>
+                <h6 class="fw-bold mb-1">Phone</h6>
+                <p class="mb-0 small text-muted">+91 9629484543</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- EMAIL -->
+          <div class="p-3 mb-3 rounded-3 bg-light">
+            <div class="d-flex align-items-start gap-3">
+              <div class="fs-4 text-success">✉</div>
+              <div>
+                <h6 class="fw-bold mb-1">Email</h6>
+                <p class="mb-0 small text-muted">bioindia&#64;gmail.com</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- WEBSITE -->
+          <div class="p-3 mb-3 rounded-3 bg-light">
+            <div class="d-flex align-items-start gap-3">
+              <div class="fs-4 text-success">🌐</div>
+              <div>
+                <h6 class="fw-bold mb-1">Website</h6>
+                <p class="mb-0 small text-muted">
+                  www.freshbioindia.com <br />
+                  www.freshbio.co.in
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <!-- WORKING HOURS -->
+          <div class="p-3 rounded-3 bg-light">
+            <div class="d-flex align-items-start gap-3">
+              <div class="fs-4 text-success">🕘</div>
+              <div class="w-100">
+                <h6 class="fw-bold mb-2">Working Hours</h6>
+
+                <table
+                  class="table table-sm table-borderless mb-0 small text-muted"
+                >
+                  <tbody>
+                    <tr>
+                      <td class="fw-semibold">Monday - Friday</td>
+                      <td>9:00 AM – 6:00 PM</td>
+                    </tr>
+                    <tr>
+                      <td class="fw-semibold text-danger">Saturday</td>
+                      <td class="text-danger">Closed</td>
+                    </tr>
+                    <tr>
+                      <td class="fw-semibold text-danger">Sunday</td>
+                      <td class="text-danger">Closed</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- CONTACT FORM -->
+    <div class="col-md-7">
+      <div class="card border-0 shadow-lg rounded-4 h-100">
+        <div class="card-body p-4">
+          <h5 class="fw-bold mb-4 text-success">Send a Message to Fresh Bio</h5>
+
+          <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" novalidate>
+            <div class="row">
+              <div class="col-md-6 mb-3">
+                <label class="form-label fw-semibold">Full Name</label>
+                <input class="form-control" formControlName="name" />
+              </div>
+
+              <div class="col-md-6 mb-3">
+                <label class="form-label fw-semibold">Email Address</label>
+                <input class="form-control" formControlName="email" />
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Mobile Number</label>
+              <input
+                class="form-control"
+                maxlength="10"
+                inputmode="numeric"
+                formControlName="mobile"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label class="form-label fw-semibold">Nature of Query</label>
+              <select class="form-select" formControlName="queryType">
+                <option value="" disabled>Select</option>
+                <option>Product Enquiry</option>
+                <option>Bulk Orders</option>
+                <option>Dealership / Distribution</option>
+                <option>Partnership</option>
+                <option>Corporate Orders</option>
+                <option>Feedback</option>
+              </select>
+            </div>
+
+            <div class="mb-4">
+              <label class="form-label fw-semibold">Message</label>
+              <textarea
+                class="form-control"
+                rows="4"
+                formControlName="message"
+              ></textarea>
+            </div>
+
+            <button
+              class="btn btn-success px-4"
+              type="submit"
+              [disabled]="contactForm.invalid"
+            >
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MAP -->
+<div class="container my-4">
+  <div class="card border-0 shadow rounded-4 overflow-hidden">
+    <div class="card-header bg-success text-white fw-semibold py-2">
+      Head Office Location
+    </div>
+    <iframe
+      src="https://www.google.com/maps?q=Masoodpur%20Vasant%20Kunj%20New%20Delhi&output=embed"
+      style="border: 0; width: 100%; height: 250px"
+      loading="lazy"
+    ></iframe>
+  </div>
+</div>

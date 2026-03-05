@@ -1,0 +1,211 @@
+<div class="dashboard-container py-5 mt-4">
+    <div class="container">
+        <!-- Header Section -->
+        <div class="row mb-5 align-items-end">
+            <div class="col-md-7">
+                <span class="badge mb-2 px-3 py-2 rounded-pill"
+                    style="background: rgba(20, 77, 55, 0.1); color: #144d37; font-weight: 700;">ADMIN PANEL</span>
+                <h1 class="fw-bold mb-0" style="color: #1e293b; font-size: 2.5rem;">Business <span
+                        style="color: #144d37;">Insights</span></h1>
+                <p class="text-muted mt-2 mb-0 lead">Monitor performance and manage your eco-luxury store</p>
+            </div>
+            <div class="col-md-5 text-md-end mt-4 mt-md-0">
+                <div class="p-3 bg-white shadow-sm rounded-4 d-inline-flex align-items-center gap-3">
+                    <div class="text-end">
+                        <small class="text-muted d-block">Today's Date</small>
+                        <span class="fw-bold">{{ today | date:'MMMM d, y`y' }}</span>
+                    </div>
+                    <div class="p-2 bg-light rounded-3">
+                        <i class="bi bi-calendar3 fs-4 text-dark"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Stat Cards Grid -->
+        <div class="row g-4 mb-5">
+            <div class="col-md-4">
+                <div class="stat-card bg-gradient-green text-white h-100 shadow">
+                    <div class="card-content">
+                        <div class="stat-icon">
+                            <i class="bi bi-wallet2 fs-4"></i>
+                        </div>
+                        <p class="stat-label">Total Revenue</p>
+                        <h2 class="stat-value">Rs. {{summary?.totalRevenue || 0}}</h2>
+                        <div class="mt-3 opacity-75 small">
+                            <i class="bi bi-arrow-up-right"></i> +12% from last month
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stat-card bg-gradient-blue text-white h-100 shadow">
+                    <div class="card-content">
+                        <div class="stat-icon">
+                            <i class="bi bi-bag-check fs-4"></i>
+                        </div>
+                        <p class="stat-label">Total Orders</p>
+                        <h2 class="stat-value">{{summary?.totalOrders || 0}}</h2>
+                        <div class="mt-3 opacity-75 small">
+                            <i class="bi bi-arrow-up-right"></i> 5 new orders today
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stat-card bg-gradient-dark text-white h-100 shadow">
+                    <div class="card-content">
+                        <div class="stat-icon">
+                            <i class="bi bi-box-seam fs-4"></i>
+                        </div>
+                        <p class="stat-label">Active Products</p>
+                        <h2 class="stat-value">{{productCount}}</h2>
+                        <div class="mt-3 opacity-75 small">
+                            <i class="bi bi-check-circle"></i> Inventory is healthy
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Business Intelligence Section (Date Based Reports) -->
+        <div class="row mb-5">
+            <div class="col-lg-12">
+                <div class="report-card p-4 p-md-5 shadow-sm bg-white rounded-4 border-0">
+                    <div
+                        class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
+                        <div>
+                            <h3 class="fw-bold mb-1" style="color: #1a293b;">Sales <span
+                                    style="color: #144d37;">Perspective</span></h3>
+                            <p class="text-muted small mb-0">Select a date to view detailed performance metrics</p>
+                        </div>
+                        <div class="date-picker-group d-flex gap-2">
+                            <input type="date" [(ngModel)]="selectedDate"
+                                class="form-control border-0 bg-light px-4 py-2 rounded-start-pill fw-bold"
+                                style="min-width: 200px; color: #144d37;">
+                            <button (click)="fetchSalesReport()"
+                                class="btn btn-success px-4 py-2 rounded-end-pill fw-bold shadow-sm d-flex align-items-center gap-2">
+                                <i class="bi bi-search"></i>
+                                <span>VIEW</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Report Content -->
+                    <div *ngIf="!isLoadingReport && salesReport" class="row g-4 mb-4">
+                        <div class="col-md-4">
+                            <div class="p-4 rounded-4"
+                                style="background: rgba(20, 77, 55, 0.03); border: 1px solid rgba(20, 77, 55, 0.08);">
+                                <span class="text-muted small d-block mb-1 text-uppercase fw-bold">Items Sold</span>
+                                <h4 class="fw-bold mb-0 text-dark">{{salesReport.totalProducts || 0}}</h4>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="p-4 rounded-4"
+                                style="background: rgba(47, 143, 119, 0.03); border: 1px solid rgba(47, 143, 119, 0.08);">
+                                <span class="text-muted small d-block mb-1 text-uppercase fw-bold">Daily Revenue</span>
+                                <h4 class="fw-bold mb-0 text-dark">Rs. {{salesReport.totalRevenue || 0}}</h4>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            <div class="p-4 rounded-4"
+                                style="background: rgba(30, 41, 59, 0.03); border: 1px solid rgba(30, 41, 59, 0.08);">
+                                <span class="text-muted small d-block mb-1 text-uppercase fw-bold">Orders</span>
+                                <h4 class="fw-bold mb-0 text-dark">{{salesReport.totalOrders || 0}}</h4>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Orders Table -->
+                    <div *ngIf="!isLoadingReport && salesReport && salesReport.orders.length > 0"
+                        class="table-responsive rounded-3 mt-2">
+                        <table class="table table-hover align-middle mb-0">
+                            <thead class="bg-light">
+                                <tr style="font-size: 0.85rem; color: #64748b;">
+                                    <th class="border-0 px-4 py-3">PRODUCT</th>
+                                    <th class="border-0 px-4 py-3">QTY</th>
+                                    <th class="border-0 px-4 py-3">AMOUNT</th>
+                                    <th class="border-0 px-4 py-3">STATUS</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr *ngFor="let order of salesReport.orders" style="border-bottom: 1px solid #f1f5f9;">
+                                    <td class="px-4 py-3 fw-bold text-dark">{{order.product}}</td>
+                                    <td class="px-4 py-3 text-muted">{{order.quantity}}</td>
+                                    <td class="px-4 py-3 fw-bold text-dark">Rs. {{order.amount}}</td>
+                                    <td class="px-4 py-3">
+                                        <span class="badge rounded-pill"
+                                            [ngClass]="order.status === 'CONFIRMED' ? 'bg-success-subtle text-success' : 'bg-warning-subtle text-warning'"
+                                            style="font-size: 0.75rem; font-weight: 700;">
+                                            {{order.status}}
+                                        </span>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <!-- Empty State -->
+                    <div *ngIf="!isLoadingReport && salesReport && salesReport.orders.length === 0"
+                        class="text-center py-5">
+                        <div class="mb-3">
+                            <i class="bi bi-inbox fs-1 text-muted opacity-25"></i>
+                        </div>
+                        <h5 class="text-muted fw-normal">No sales recorded for this date</h5>
+                    </div>
+
+                    <!-- Loading State -->
+                    <div *ngIf="isLoadingReport" class="text-center py-5">
+                        <div class="spinner-border text-success" role="status">
+                            <span class="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="actions-card p-5">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                        <h4 class="fw-bold mb-0 text-dark">Quick Operations</h4>
+                        <span class="text-muted small">Frequent tasks</span>
+                    </div>
+
+                    <div class="row g-4">
+                        <div class="col-md-4">
+                            <button routerLink="/admin/products"
+                                class="action-btn w-100 text-start btn-manage-products h-100">
+                                <div class="p-2 bg-white rounded-3 mb-2 shadow-sm">
+                                    <i class="bi bi-grid-3x3-gap action-icon"></i>
+                                </div>
+                                <span class="action-label">Manage Products</span>
+                                <span class="action-desc">Update stock, prices and visibility</span>
+                            </button>
+                        </div>
+                        <div class="col-md-4">
+                            <button routerLink="/admin/orders"
+                                class="action-btn w-100 text-start btn-manage-orders h-100">
+                                <div class="p-2 bg-white rounded-3 mb-2 shadow-sm">
+                                    <i class="bi bi-receipt action-icon"></i>
+                                </div>
+                                <span class="action-label">Manage Orders</span>
+                                <span class="action-desc">Track status and review history</span>
+                            </button>
+                        </div>
+                        <div class="col-md-4">
+                            <button routerLink="/admin/add-product"
+                                class="action-btn w-100 text-start btn-add-product h-100">
+                                <div class="p-2 bg-white bg-opacity-10 rounded-3 mb-2 shadow-sm">
+                                    <i class="bi bi-plus-circle action-icon"></i>
+                                </div>
+                                <span class="action-label">Add New Item</span>
+                                <span class="action-desc">Launch a new eco-organic product</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

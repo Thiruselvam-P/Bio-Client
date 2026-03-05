@@ -1,0 +1,460 @@
+<!-- HERO CAROUSEL SECTION -->
+<div id="heroCarousel" class="carousel slide mb-5" data-bs-ride="carousel">
+
+  <!-- Indicators -->
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="0" class="active"></button>
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="1"></button>
+    <button type="button" data-bs-target="#heroCarousel" data-bs-slide-to="2"></button>
+  </div>
+
+  <!-- Slides -->
+  <div class="carousel-inner">
+
+    <!-- Slide 1 -->
+    <div class="carousel-item active">
+      <img src="freshhome1.jpg" class="d-block w-100 bright-nature-img" style="height: 700px; object-fit: cover;"
+        alt="Fresh Organic Products">
+    </div>
+
+    <!-- Slide 2 -->
+    <div class="carousel-item">
+      <img src="freshhome2.jpg" class="d-block w-100 bright-nature-img" style="height: 700px; object-fit: cover;"
+        alt="Eco Friendly Products">
+    </div>
+
+    <!-- Slide 3 -->
+    <div class="carousel-item">
+      <img src="freshhome3.jpg" class="d-block w-100 bright-nature-img" style="height: 700px; object-fit: cover;"
+        alt="Natural Lifestyle">
+    </div>
+
+  </div>
+
+  <!-- Controls -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#heroCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+
+  <button class="carousel-control-next" type="button" data-bs-target="#heroCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+
+</div>
+
+<!-- PRODUCT CATEGORIES SECTION -->
+<div class="container my-5">
+
+  <!-- Section Heading -->
+  <div class="text-center mb-5">
+    <h2 class="fw-bold display-6" style="color: #144d37;">
+      Our Products
+    </h2>
+    <p class="text-muted fs-5">
+      Explore our eco-friendly and sustainable product ranges.
+    </p>
+  </div>
+
+  <div class="row g-4">
+
+    <!-- Card 1 -->
+    <div class="col-md-4">
+      <a routerLink="/products" [queryParams]="{category: 'Areca Plate'}" class="text-decoration-none">
+
+        <div class="position-relative rounded-4 overflow-hidden shadow-sm">
+
+          <img src="freshhome3.jpg" class="w-100" style="height: 260px; object-fit: cover;">
+
+          <!-- Gradient Overlay -->
+          <div class="position-absolute top-0 start-0 w-100 h-100"
+            style="background: linear-gradient(to top, rgba(0,0,0,0.65), rgba(0,0,0,0.1));">
+          </div>
+
+          <!-- Text -->
+          <div class="position-absolute bottom-0 start-0 p-4 text-white">
+            <h5 class="fw-semibold mb-1">Areca Leaf Plates</h5>
+            <small class="text-light">View Collection →</small>
+          </div>
+
+        </div>
+      </a>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="col-md-4">
+      <a routerLink="/products" [queryParams]="{category: 'Birchwood'}" class="text-decoration-none">
+
+        <div class="position-relative rounded-4 overflow-hidden shadow-sm">
+
+          <img src="freshhome2.jpg" class="w-100" style="height: 260px; object-fit: cover;">
+
+          <div class="position-absolute top-0 start-0 w-100 h-100"
+            style="background: linear-gradient(to top, rgba(0,0,0,0.65), rgba(0,0,0,0.1));">
+          </div>
+
+          <div class="position-absolute bottom-0 start-0 p-4 text-white">
+            <h5 class="fw-semibold mb-1">Wooden Cutlery</h5>
+            <small class="text-light">View Collection →</small>
+          </div>
+
+        </div>
+      </a>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="col-md-4">
+      <a routerLink="/products" [queryParams]="{category: 'Paper Products'}" class="text-decoration-none">
+
+        <div class="position-relative rounded-4 overflow-hidden shadow-sm">
+
+          <img src="paper-cups.jpg" class="w-100" style="height: 260px; object-fit: cover;">
+
+          <div class="position-absolute top-0 start-0 w-100 h-100"
+            style="background: linear-gradient(to top, rgba(0,0,0,0.65), rgba(0,0,0,0.1));">
+          </div>
+
+          <div class="position-absolute bottom-0 start-0 p-4 text-white">
+            <h5 class="fw-semibold mb-1">Paper Cups & Bowls</h5>
+            <small class="text-light">View Collection →</small>
+          </div>
+
+        </div>
+      </a>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="col-md-4">
+      <a routerLink="/products" [queryParams]="{category: 'Bagasse'}" class="text-decoration-none">
+
+        <div class="position-relative rounded-4 overflow-hidden shadow-sm">
+
+          <img src="compostablecontainers.jpg" class="w-100" style="height: 260px; object-fit: cover;">
+
+          <div class="position-absolute top-0 start-0 w-100 h-100"
+            style="background: linear-gradient(to top, rgba(0,0,0,0.65), rgba(0,0,0,0.1));">
+          </div>
+
+          <div class="position-absolute bottom-0 start-0 p-4 text-white">
+            <h5 class="fw-semibold mb-1">Compostable Containers</h5>
+            <small class="text-light">View Collection →</small>
+          </div>
+
+        </div>
+      </a>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="col-md-4">
+      <a routerLink="/products" [queryParams]="{category: 'Eco'}" class="text-decoration-none">
+
+        <div class="position-relative rounded-4 overflow-hidden shadow-sm">
+
+          <img src="packaging.jpg" class="w-100" style="height: 260px; object-fit: cover;">
+
+          <div class="position-absolute top-0 start-0 w-100 h-100"
+            style="background: linear-gradient(to top, rgba(0,0,0,0.65), rgba(0,0,0,0.1));">
+          </div>
+
+          <div class="position-absolute bottom-0 start-0 p-4 text-white">
+            <h5 class="fw-semibold mb-1">Eco Packaging</h5>
+            <small class="text-light">View Collection →</small>
+          </div>
+
+        </div>
+      </a>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="col-md-4">
+      <a routerLink="/products" [queryParams]="{category: 'Eco Friendly'}" class="text-decoration-none">
+
+        <div class="position-relative rounded-4 overflow-hidden shadow-sm">
+
+          <img src="homeessentials.jpg" class="w-100" style="height: 260px; object-fit: cover;">
+
+          <div class="position-absolute top-0 start-0 w-100 h-100"
+            style="background: linear-gradient(to top, rgba(0,0,0,0.65), rgba(0,0,0,0.1));">
+          </div>
+
+          <div class="position-absolute bottom-0 start-0 p-4 text-white">
+            <h5 class="fw-semibold mb-1">Home Essentials</h5>
+            <small class="text-light">View Collection →</small>
+          </div>
+
+        </div>
+      </a>
+    </div>
+
+  </div>
+
+</div>
+<!-- design -->
+
+<section class="collections-section py-5">
+
+  <div class="container">
+    <div class="row align-items-center">
+
+      <!-- LEFT SIDE IMAGE -->
+      <div class="col-lg-5 text-center mb-4 mb-lg-0">
+        <img src="image9.jpg" class="img-fluid rounded-4 shadow-lg w-100" style="height: 450px; object-fit: cover;"
+          alt="Fresh Bio">
+      </div>
+
+      <!-- RIGHT SIDE CIRCLE LAYOUT -->
+      <div class="col-lg-7 d-flex justify-content-center">
+
+        <div class="circle-wrapper position-relative">
+
+          <!-- CENTER -->
+          <div class="center-title" style="color: #144d37;">
+            Our Collections
+          </div>
+
+          <!-- AROUND IMAGES -->
+          <div class="circle-item item1">
+            <img src="logo.jpg" alt="">
+          </div>
+
+          <div class="circle-item item2">
+            <img src="logo1.jpg" alt="">
+          </div>
+
+          <div class="circle-item item3">
+            <img src="freshhome1.jpg" alt="">
+          </div>
+
+          <div class="circle-item item4">
+            <img src="freshhome3.jpg" alt="">
+          </div>
+
+          <div class="circle-item item5">
+            <img src="packaging.jpg" alt="">
+          </div>
+
+          <div class="circle-item item6">
+            <img src="tableware1.png" alt="">
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+  </div>
+
+</section>
+<!-- feature freshness -->
+<div class="featured-products py-5">
+  <div class="container">
+    <div class="text-center mb-5">
+      <h2 class="fw-bold display-6" style="color: #144d37;">Featured Freshness</h2>
+      <p class="text-muted lead">Directly from nature to your doorstep.</p>
+      <div class="mx-auto mt-3 mb-4" style="width: 60px; height: 3px; background-color: #2f8f77;"></div>
+    </div>
+
+    <!-- TRENDING MARQUEE -->
+    <div class="mb-5" *ngIf="marqueeProducts.length > 0">
+      <h3 class="fw-bold border-start border-4 ps-3 text-uppercase mb-4" style="color:#144d37; border-color:#144d37;">
+        Popular Picks
+      </h3>
+      <div class="marquee-wrapper">
+        <div class="marquee-content">
+          <ng-container *ngFor="let i of [1,2]">
+            <div class="pcard" *ngFor="let product of marqueeProducts">
+              <div class="pcard-img-wrap">
+                <span class="pcard-badge">Fresh</span>
+                <img
+                  [src]="product.imageUrl ? 'http://localhost:3000/uploads/' + product.imageUrl : 'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'"
+                  [alt]="product.productName" class="pcard-img">
+              </div>
+              <div class="pcard-body">
+                <h6 class="pcard-name">{{ product.productName }}</h6>
+                <div class="pcard-stars">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+                  <span class="pcard-rating-count">(4.5)</span>
+                </div>
+                <div class="pcard-price-row">
+                  <span class="pcard-price">₹{{ product.price }}</span>
+                  <span class="pcard-original" *ngIf="product.price">₹{{ product.price + 40 }}</span>
+                </div>
+                <button class="pcard-btn" (click)="addToCart(product)">
+                  <i class="bi bi-bag-plus me-1"></i> Add to Cart
+                </button>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+
+    <!-- PRODUCT SECTIONS LOOP -->
+    <ng-container *ngFor="let category of [
+    { title: 'Kitchenware', items: kitchenware, query: 'Kitchenware', fallback: 'https://images.unsplash.com/photo-1566385101042-1a0aa0c1236c?auto=format&fit=crop&q=80&w=600' },
+    { title: 'Drinkware', items: drinkware, query: 'Drinkware', fallback: 'https://images.unsplash.com/photo-1514218953589-2d7d37efd2dd?auto=format&fit=crop&q=80&w=600' },
+    { title: 'Seasonal Fruits', items: fruits, query: 'Fruits', fallback: 'https://images.unsplash.com/photo-1610832958506-aa56338406cd?auto=format&fit=crop&q=80&w=600' },
+    { title: 'Organic Millets', items: millets, query: 'Millets', fallback: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&q=80&w=600' },
+    { title: 'Aromatic Spices', items: spices, query: 'Spices', fallback: 'https://images.unsplash.com/photo-1596040033229-a9821ebd058d?auto=format&fit=crop&q=80&w=600' },
+    { title: 'Organic Rice', items: organicRice, query: 'Organic Rice', fallback: 'https://images.unsplash.com/photo-1586201375761-83865001e31c?auto=format&fit=crop&q=80&w=600' }
+  ]">
+      <div class="mb-5" *ngIf="category.items.length > 0">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+          <h3 class="fw-bold border-start border-4 ps-3 text-uppercase" style="color:#144d37; border-color:#144d37;">{{
+            category.title
+            }}</h3>
+          <a routerLink="/products" [queryParams]="{category: category.query}" class="btn btn-sm rounded-pill"
+            style="color: #144d37; border-color: #144d37;">View All</a>
+        </div>
+        <div class="row g-4">
+          <div class="col-6 col-md-3" *ngFor="let product of category.items">
+            <div class="pcard">
+              <div class="pcard-img-wrap">
+                <span class="pcard-badge">Eco</span>
+                <img [src]="product.imageUrl ? 'http://localhost:3000/uploads/' + product.imageUrl : category.fallback"
+                  [alt]="product.productName" class="pcard-img">
+              </div>
+              <div class="pcard-body">
+                <p class="pcard-category">{{ category.title }}</p>
+                <h6 class="pcard-name">{{ product.productName }}</h6>
+                <div class="pcard-stars">
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  <i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
+                  <span class="pcard-rating-count">(4.5)</span>
+                </div>
+                <div class="pcard-price-row">
+                  <span class="pcard-price">₹{{ product.price }}</span>
+                  <span class="pcard-original" *ngIf="product.price">₹{{ product.price + 40 }}</span>
+                </div>
+                <button class="pcard-btn" (click)="addToCart(product)">
+                  <i class="bi bi-bag-plus me-1"></i> Add to Cart
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+
+<!-- SOCIAL STRIP SECTION -->
+<section class="social-strip-section">
+  <div class="container">
+
+    <!-- Header Row -->
+    <div class="d-flex flex-column flex-md-row justify-content-between align-items-md-center mb-4 gap-3">
+      <div>
+        <span class="strip-eyebrow"><i class="bi bi-instagram me-1"></i> &#64;freshbioindia</span>
+        <h2 class="strip-title">Follow Our <span>Journey</span></h2>
+      </div>
+      <a href="https://www.instagram.com/freshbio143/" target="_blank" class="strip-follow-btn">
+        <i class="bi bi-instagram me-2"></i> Follow Us
+      </a>
+    </div>
+
+    <!-- Photo Strip -->
+    <div class="social-photo-strip">
+
+      <div class="social-photo-item item-lg">
+        <img src="insta-img/insta1.jpg" alt="Eco Garden">
+        <div class="photo-overlay">
+          <i class="bi bi-heart-fill"></i> 842
+          <span class="ms-3"><i class="bi bi-chat-fill"></i> 24</span>
+        </div>
+      </div>
+
+      <div class="social-photo-item">
+        <img src="insta-img/insta2.jpg" alt="Sustainability">
+        <div class="photo-overlay">
+          <i class="bi bi-heart-fill"></i> 412
+          <span class="ms-3"><i class="bi bi-chat-fill"></i> 12</span>
+        </div>
+      </div>
+
+      <div class="social-photo-item">
+        <img src="insta-img/insta3.jpg" alt="Packaging">
+        <div class="photo-overlay">
+          <i class="bi bi-heart-fill"></i> 621
+          <span class="ms-3"><i class="bi bi-chat-fill"></i> 18</span>
+        </div>
+      </div>
+
+      <div class="social-photo-item">
+        <img src="insta-img/insta4.jpg" alt="Eco Choice">
+        <div class="photo-overlay">
+          <i class="bi bi-heart-fill"></i> 530
+          <span class="ms-3"><i class="bi bi-chat-fill"></i> 15</span>
+        </div>
+      </div>
+
+      <div class="social-photo-item item-cta">
+        <div class="cta-tile">
+          <i class="bi bi-instagram cta-ig-icon"></i>
+          <p class="cta-tile-label">See more on Instagram</p>
+          <a href="https://www.instagram.com/freshbio143/" target="_blank" class="cta-tile-btn">
+            Open Profile
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+<!-- GREEN MOVEMENT -->
+<div class="position-relative d-flex align-items-center justify-content-center text-center" style="
+    background: url('above-footer2.jpg') center/cover no-repeat;
+    min-height: 520px;
+    font-family: 'Poppins', sans-serif;
+  ">
+
+  <!-- Light Overlay (FIXED SIZE) -->
+  <div class="position-absolute top-0 start-0 w-100 h-0" style="background: rgba(255, 255, 255, 0.75);">
+  </div>
+
+  <div class="container position-relative">
+
+    <div class="row justify-content-center">
+      <div class="col-lg-9">
+
+        <!-- Heading -->
+        <h1 class="fw-semibold mb-4" style="
+            font-size: clamp(2.2rem, 4vw, 3.2rem);
+            line-height: 1.3;
+            letter-spacing: -0.5px;
+            color: #1f2937;
+          ">
+          The Future is Green.
+          <span class="d-block mt-2" style="color: #14532D;">
+            Be Part of It.
+          </span>
+        </h1>
+
+        <!-- Subtitle -->
+        <p class="mb-4 mx-auto" style="
+            max-width: 720px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+            font-weight: 400;
+            color: #374151;
+          ">
+          Sustainable living isn’t a trend — it’s a responsibility.
+          Explore smarter choices that shape tomorrow.
+        </p>
+
+        <!-- Button -->
+        <a routerLink="/products" class="btn btn-lg px-5 py-3 rounded-pill fw-medium shadow" style="
+            background-color: #14532D;
+            border: none;
+            color: white;
+          ">
+          Explore Products
+        </a>
+
+      </div>
+    </div>
+
+  </div>
+
+</div>

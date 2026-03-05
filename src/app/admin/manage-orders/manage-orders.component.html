@@ -1,0 +1,60 @@
+<div class="container py-5 mt-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h3 class="fw-bold text-success">Manage Customer Orders</h3>
+        <div class="d-flex gap-2">
+            <span class="badge bg-warning text-dark p-2 px-3 rounded-pill border">{{pendingOrders}} Pending</span>
+            <span class="badge bg-success p-2 px-3 rounded-pill">{{confirmedOrders}} Confirmed</span>
+        </div>
+    </div>
+
+    <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+        <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+                <thead class="bg-light text-muted small text-uppercase fw-bold">
+                    <tr>
+                        <th class="ps-4">Order Info</th>
+                        <th>Customer</th>
+                        <th>Items</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th class="text-end pe-4">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let o of orders">
+                        <td class="ps-4">
+                            <span class="fw-bold d-block">{{(o._id?.slice(-6) || '').toUpperCase()}}</span>
+                            <span class="text-muted small">{{o.createdAt | date:'short'}}</span>
+                        </td>
+                        <td>
+                            <span class="fw-bold d-block">{{o.userId?.name}}</span>
+                            <span class="text-muted small d-block">{{o.userId?.email}}</span>
+                            <div class="mt-1 small text-muted" *ngIf="o.shippingAddress">
+                                <i class="bi bi-geo-alt me-1"></i>{{o.shippingAddress}}
+                            </div>
+                        </td>
+                        <td>
+                            <span class="text-success fw-bold">{{o.productId?.productName}}</span>
+                            <span class="text-muted ms-1">x{{o.quantity}}</span>
+                        </td>
+                        <td><span class="fw-bold text-success">Rs. {{o.totalAmount}}</span></td>
+                        <td>
+                            <span class="badge"
+                                [ngClass]="o.orderStatus === 'PENDING' ? 'bg-warning-subtle text-warning' : 'bg-success-subtle text-success'">
+                                {{o.orderStatus}}
+                            </span>
+                        </td>
+                        <td class="text-end pe-4">
+                            <button *ngIf="o.orderStatus === 'PENDING'" (click)="updateStatus(o._id!, 'CONFIRMED')"
+                                class="btn btn-sm btn-success rounded-3 px-3">
+                                CONFIRM
+                            </button>
+                            <span *ngIf="o.orderStatus === 'CONFIRMED'" class="text-success small fw-bold"><i
+                                    class="bi bi-check-all"></i> Processed</span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

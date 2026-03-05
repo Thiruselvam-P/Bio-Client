@@ -1,0 +1,59 @@
+.animate-in {
+    animation: fadeInUp 0.6s ease-out;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.order-id-box {
+    border-style: dashed !important;
+}
+
+.status-timeline {
+    padding: 0 20px;
+}
+
+.timeline-step {
+    z-index: 2;
+    text-align: center;
+    width: 25%;
+}
+
+.dot {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    margin: 0 auto;
+}
+
+.timeline-line {
+    position: absolute;
+    top: 7px;
+    left: 12.5%;
+    width: 75%;
+    height: 2px;
+    z-index: 1;
+}
+
+.success-checkmark {
+    animation: scaleIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+@keyframes scaleIn {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}

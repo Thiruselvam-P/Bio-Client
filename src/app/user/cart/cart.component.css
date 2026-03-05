@@ -1,0 +1,14 @@
+/* Custom CSS for cart page */
+.card {
+    transition: box-shadow 0.2s;
+}
+
+.card:hover {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.img-fluid.rounded-3 {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+}

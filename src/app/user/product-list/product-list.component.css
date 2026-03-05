@@ -1,0 +1,144 @@
+.product-rating {
+    display: flex;
+    align-items: center;
+    gap: 3px;
+    font-size: 0.85rem;
+}
+
+.product-rating .bi-star-fill {
+    color: #f97316;
+    /* Amazon-style Orange */
+}
+
+.product-rating .bi-star {
+    color: #ccc;
+}
+
+.rating-count {
+    font-size: 0.85rem;
+    color: #007185;
+    /* Professional blue link color for reviews */
+}
+
+.price-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.current-price {
+    display: flex;
+    align-items: flex-start;
+    color: #1a1a1a;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.current-price .symbol {
+    font-size: 0.85rem;
+    margin-right: 1px;
+    margin-top: 4px;
+}
+
+.current-price .amount {
+    font-size: 1.7rem;
+    letter-spacing: -1px;
+}
+
+.current-price .cents {
+    font-size: 0.85rem;
+    margin-left: 1px;
+    margin-top: 4px;
+    font-weight: 600;
+}
+
+.original-price {
+    font-size: 0.85rem;
+    color: #565959;
+    text-decoration: line-through;
+    margin-top: 1px;
+}
+
+.product-card {
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    border: 1px solid #ddd !important;
+}
+
+.product-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Image Modal Overlay Styles */
+.image-modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.9);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 10000;
+    cursor: zoom-out;
+    animation: fadeIn 0.3s ease;
+}
+
+.modal-content-wrap {
+    position: relative;
+    max-width: 90vw;
+    max-height: 90vh;
+    animation: zoomIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.full-page-img {
+    max-width: 100%;
+    max-height: 90vh;
+    object-fit: contain;
+    border-radius: 8px;
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+}
+
+.modal-close-btn {
+    position: absolute;
+    top: -40px;
+    right: -40px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.modal-close-btn:hover {
+    transform: scale(1.2);
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0.85);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+/* For mobile responsiveness */
+@media (max-width: 768px) {
+    .modal-close-btn {
+        top: -50px;
+        right: 10px;
+    }
+}

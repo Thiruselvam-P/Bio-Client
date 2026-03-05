@@ -1,0 +1,53 @@
+<div class="container py-5 mt-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6 text-center">
+            <div class="card border-0 shadow-lg rounded-4 p-5 animate-in">
+                <div class="success-checkmark mb-4">
+                    <div class="check-icon">
+                        <i class="bi bi-patch-check-fill text-success" style="font-size: 5rem;"></i>
+                    </div>
+                </div>
+
+                <h2 class="fw-bold mb-3">Order Placed Successfully!</h2>
+                <p class="text-muted mb-4">Thank you for shopping with MJ Fresh. Your order has been placed and is being
+                    processed.</p>
+
+                <div class="order-id-box bg-light p-3 rounded-3 mb-4 border">
+                    <span class="text-muted small d-block">ORDER ID</span>
+                    <h4 class="fw-bold mb-0 text-success">{{orderId}}</h4>
+                </div>
+
+                <div class="status-timeline mb-5">
+                    <div class="d-flex justify-content-between position-relative">
+                        <div class="timeline-step active">
+                            <div class="dot bg-success"></div>
+                            <span class="small d-block mt-2">Placed</span>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="dot bg-light border"></div>
+                            <span class="small d-block mt-2 text-muted">Processing</span>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="dot bg-light border"></div>
+                            <span class="small d-block mt-2 text-muted">Shipped</span>
+                        </div>
+                        <div class="timeline-step">
+                            <div class="dot bg-light border"></div>
+                            <span class="small d-block mt-2 text-muted">Delivery</span>
+                        </div>
+                        <div class="timeline-line bg-light"></div>
+                    </div>
+                </div>
+
+                <div class="d-grid gap-3">
+                    <button (click)="goToOrders()" class="btn btn-success btn-lg rounded-pill fw-bold py-3 shadow-sm">
+                        View My Orders
+                    </button>
+                    <button routerLink="/home" class="btn btn-outline-success btn-lg rounded-pill fw-bold py-3">
+                        Continue Shopping
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

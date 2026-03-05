@@ -1,0 +1,75 @@
+/* Global Eco-Friendly Theme Styles */
+
+:root {
+    --primary-green: #2ecc71;
+    --dark-green: #27ae60;
+    --eco-light: #f1f8f4;
+}
+
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    color: #2c3e50;
+    background-color: #ffffff;
+}
+
+.btn-success {
+    background-color: var(--primary-green);
+    border-color: var(--primary-green);
+}
+
+.btn-success:hover {
+    background-color: var(--dark-green);
+    border-color: var(--dark-green);
+}
+
+.text-success {
+    color: var(--primary-green) !important;
+}
+
+.bg-success {
+    background-color: var(--primary-green) !important;
+}
+
+.card {
+    transition: transform 0.2s ease-in-out;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+}
+
+.navbar-brand {
+    letter-spacing: -0.5px;
+}
+
+.breadcrumb-item+.breadcrumb-item::before {
+    content: "→";
+}
+
+/* Custom badges */
+.badge {
+    font-weight: 600;
+    padding: 0.5em 0.8em;
+}
+
+.bg-success-subtle {
+    background-color: #e8f5e9 !important;
+    color: #2e7d32 !important;
+}
+
+.bg-warning-subtle {
+    background-color: #fff8e1 !important;
+    color: #f57f17 !important;
+}
+
+.bg-danger-subtle {
+    background-color: #ffebee !important;
+    color: #c62828 !important;
+}
+
+/* Form Styling */
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--primary-green);
+    box-shadow: 0 0 0 0.25rem rgba(46, 204, 113, 0.25);
+}

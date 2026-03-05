@@ -1,0 +1,68 @@
+<div class="container py-5 mt-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a routerLink="/products" class="text-success text-decoration-none">Products</a>
+            </li>
+            <li class="breadcrumb-item active" aria-current="page">{{product?.productName}}</li>
+        </ol>
+    </nav>
+
+    <div *ngIf="loading" class="text-center py-5">
+        <div class="spinner-border text-success" role="status"></div>
+    </div>
+
+    <div class="row g-5" *ngIf="!loading && product">
+        <div class="col-md-6">
+            @if (product.imageUrl) {
+            <img [src]="'http://localhost:3000/uploads/' + product.imageUrl" class="img-fluid rounded-5 shadow"
+                alt="{{product.productName}}">
+            } @else {
+            <img src="https://images.unsplash.com/photo-1610348725531-843dff563e2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=1200&q=80"
+                class="img-fluid rounded-5 shadow" alt="{{product.productName}}">
+            }
+        </div>
+        <div class="col-md-6">
+            <span class="badge bg-success-subtle text-success px-3 py-2 rounded-pill mb-3">{{product.category}}</span>
+            <h1 class="display-4 fw-bold mb-3">{{product.productName}}</h1>
+            <p class="h2 text-success fw-bold mb-4">Rs. {{product.price}}</p>
+
+            <div class="mb-4">
+                <h5 class="fw-bold">Description</h5>
+                <p class="text-muted lead">{{product.description}}</p>
+            </div>
+
+            <div class="p-4 bg-light rounded-4 mb-4">
+                <div class="d-flex align-items-center mb-3">
+                    <label class="fw-bold me-3">Quantity:</label>
+                    <div class="input-group" style="width: 140px;">
+                        <button class="btn btn-outline-success" (click)="updateQty(-1)">-</button>
+                        <input type="number" class="form-control text-center" [(ngModel)]="quantity" readonly>
+                        <button class="btn btn-outline-success" (click)="updateQty(1)">+</button>
+                    </div>
+                </div>
+                <p class="h5 mb-0">Total: <span class="fw-bold text-success">Rs. {{ (product.price *
+                        quantity).toFixed(2)
+                        }}</span></p>
+            </div>
+
+            <div class="d-flex gap-3">
+                <button (click)="addToCart()" [disabled]="!product.availability"
+                    class="btn btn-outline-success btn-lg flex-grow-1 py-3 fw-bold rounded-pill shadow-sm">
+                    <i class="bi bi-cart-plus me-2"></i> ADD TO CART
+                </button>
+                <button (click)="placeOrder()" [disabled]="placing || !product.availability"
+                    class="btn btn-success btn-lg flex-grow-1 py-3 fw-bold rounded-pill shadow">
+                    <span *ngIf="placing" class="spinner-border spinner-border-sm me-2"></span>
+                    <i class="bi bi-lightning-fill me-2"></i> BUY NOW (COD)
+                </button>
+            </div>
+            <p *ngIf="!product.availability" class="text-danger mt-2 text-center small">Currently out of stock</p>
+
+            <div *ngIf="successMsg"
+                class="alert alert-success mt-4 border-0 shadow-sm animate__animated animate__fadeIn">
+                <i class="bi bi-check-circle-fill me-2"></i> {{successMsg}}
+                <a routerLink="/my-orders" class="alert-link ms-2">View Orders</a>
+            </div>
+        </div>
+    </div>
+</div>

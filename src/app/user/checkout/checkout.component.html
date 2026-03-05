@@ -1,0 +1,365 @@
+<div class="checkout-container">
+    <!-- Simplified Checkout Header -->
+    <header class="checkout-header shadow-sm">
+        <div class="container d-flex justify-content-between align-items-center">
+            <h4 class="fw-bold mb-0 text-success"><i class="bi bi-shield-check me-2"></i>Secure Checkout</h4>
+            <div class="text-muted small"><i class="bi bi-lock-fill me-1"></i>100% Secure Payment</div>
+        </div>
+    </header>
+
+    <div class="container pb-5">
+        <div class="row g-4">
+            <!-- Left Side: Checkout Steps -->
+            <div class="col-lg-8">
+
+                <!-- 1. Delivery Address -->
+                <div class="checkout-card shadow-sm">
+                    <div class="checkout-card-body d-flex justify-content-between align-items-start"
+                        *ngIf="checkoutStep === 2">
+                        <div class="address-box">
+                            <h6 class="fw-bold mb-1">Delivering to {{userName}}</h6>
+                            <p class="mb-0 text-muted small">{{shippingAddress}}</p>
+                            <a class="change-link small" (click)="goToStep(1)">Add delivery instructions</a>
+                        </div>
+                        <a class="change-link fw-bold" (click)="goToStep(1)">Change</a>
+                    </div>
+
+                    <div class="checkout-card-body d-flex justify-content-between align-items-start"
+                        *ngIf="checkoutStep === 1">
+                        <div class="address-box">
+                            <h6 class="fw-bold mb-2">Delivering to {{userName}}</h6>
+                            <p class="mb-1 text-muted">{{shippingAddress}}</p>
+                            <a class="change-link" (click)="toggleAddressEditor()">Add delivery instructions</a>
+                        </div>
+                        <a class="change-link fw-bold" (click)="toggleAddressEditor()">Change</a>
+                    </div>
+
+                    <div *ngIf="showAddressEditor && checkoutStep === 1" class="p-4 border-top">
+                        <textarea class="form-control rounded-3" rows="3" [(ngModel)]="shippingAddress"
+                            placeholder="Update your address..."></textarea>
+                        <button class="btn btn-amazon-yellow mt-3 btn-sm" (click)="toggleAddressEditor()">Save
+                            Address</button>
+                    </div>
+                </div>
+
+                <!-- 2. Payment Method -->
+                <div class="checkout-card shadow-sm">
+                    <div class="checkout-card-header bg-white d-flex justify-content-between align-items-center"
+                        *ngIf="checkoutStep === 2">
+                        <h6 class="fw-bold mb-0">Payment: {{getPaymentMethodLabel()}}</h6>
+                        <a class="change-link fw-bold" (click)="goToStep(1)">Change</a>
+                    </div>
+                    <div class="checkout-card-body pb-2" *ngIf="checkoutStep === 2">
+                        <a class="change-link small" (click)="goToStep(1)">Use a gift card, voucher or promo code</a>
+                    </div>
+
+                    <div class="checkout-card-header bg-white" *ngIf="checkoutStep === 1">
+                        <h5 class="fw-bold mb-0">Payment method</h5>
+                    </div>
+                    <div class="checkout-card-body" *ngIf="checkoutStep === 1">
+                        <h6 class="fw-bold small mb-3">Select a payment method</h6>
+
+                        <!-- CARD OPTION -->
+                        <div class="payment-option" [class.active]="selectedPaymentMethod === 'card'"
+                            (click)="setPaymentMethod('card')">
+                            <div class="form-check d-flex align-items-center">
+                                <input class="form-check-input me-3" type="radio" name="payment" id="card"
+                                    [checked]="selectedPaymentMethod === 'card'">
+                                <label class="form-check-label w-100" for="card">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <span class="fw-bold">Credit or debit card</span>
+                                        <div class="d-flex gap-1">
+                                            <i class="bi bi-credit-card text-amazon-blue"></i>
+                                            <small class="text-amazon-blue">VISA | MC | AMEX</small>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- UPI OPTION -->
+                        <div class="payment-option" [class.active]="selectedPaymentMethod === 'upi'"
+                            (click)="setPaymentMethod('upi')">
+                            <div class="form-check d-flex align-items-start py-2">
+                                <input class="form-check-input me-3" type="radio" name="payment" id="upi"
+                                    [checked]="selectedPaymentMethod === 'upi'">
+                                <label class="form-check-label w-100" for="upi">
+                                    <div class="d-flex justify-content-between align-items-start">
+                                        <div>
+                                            <span class="fw-bold d-block mb-1">UPI Apps</span>
+                                            <small class="text-muted d-block line-height-sm">
+                                                GPay, PhonePe, Paytm, and more
+                                            </small>
+                                        </div>
+                                        <div class="d-flex gap-2">
+                                            <img src="https://upload.wikimedia.org/wikipedia/commons/e/e1/UPI-Logo-vector.svg"
+                                                style="height: 15px;" alt="UPI">
+                                        </div>
+                                    </div>
+                                    <div class="mt-3 p-3 bg-light rounded-3 border"
+                                        *ngIf="selectedPaymentMethod === 'upi'">
+                                        <div class="d-flex flex-wrap gap-4 justify-content-center">
+                                            <div class="upi-app text-center">
+                                                <div class="upi-logo-box mb-1"><img src="payments/gpay.png"
+                                                        style="height: 25px;" alt="GPay"></div>
+                                                <small class="fw-bold text-muted d-block">GPay</small>
+                                            </div>
+                                            <div class="upi-app text-center">
+                                                <div class="upi-logo-box mb-1"><img src="payments/ppay.png"
+                                                        style="height: 25px;" alt="PhonePe"></div>
+                                                <small class="fw-bold text-muted d-block">PhonePe</small>
+                                            </div>
+                                            <div class="upi-app text-center">
+                                                <div class="upi-logo-box mb-1"><img src="payments/paytm.png"
+                                                        style="height: 20px;" alt="Paytm"></div>
+                                                <small class="fw-bold text-muted d-block">Paytm</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </label>
+                            </div>
+                        </div>
+
+                        <!-- COD OPTION -->
+                        <div class="payment-option" [class.active]="selectedPaymentMethod === 'cod'"
+                            (click)="setPaymentMethod('cod')">
+                            <div class="form-check d-flex align-items-center">
+                                <input class="form-check-input me-3" type="radio" name="payment" id="cod"
+                                    [checked]="selectedPaymentMethod === 'cod'">
+                                <label class="form-check-label fw-bold" for="cod">Cash on Delivery</label>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-amazon-yellow px-4 mt-2 shadow-sm" [disabled]="!selectedPaymentMethod"
+                            (click)="nextStep()">
+                            Use this payment method
+                        </button>
+                    </div>
+                </div>
+
+                <!-- 3. Review items and shipping -->
+                <div class="checkout-card shadow-sm border-0">
+                    <div class="checkout-card-header bg-white" *ngIf="checkoutStep === 2">
+                        <h5 class="fw-bold mb-0">Arriving {{deliverySpeed === 'fast' ? (tomorrowDate | date:'d MMM
+                            yyyy') : (deliveryDate | date:'d MMM yyyy')}}</h5>
+                    </div>
+                    <div class="checkout-card-header bg-white" *ngIf="checkoutStep === 1">
+                        <h5 class="fw-bold mb-0">Review items and shipping</h5>
+                    </div>
+                    <div class="checkout-card-body">
+                        <!-- Single Product Display -->
+                        <div *ngIf="!isCartCheckout && product"
+                            class="d-flex align-items-start gap-4 flex-wrap flex-md-nowrap mb-4">
+                            <div class="text-center">
+                                <img [src]="'http://localhost:3000/uploads/' + product.imageUrl"
+                                    class="rounded-3 shadow-sm border mb-2"
+                                    style="width: 120px; height: 120px; object-fit: cover;">
+                                <div class="btn-group btn-group-sm w-100 border rounded-3 overflow-hidden shadow-xs">
+                                    <button class="btn btn-light" (click)="quantity = quantity > 1 ? quantity - 1 : 1">
+                                        - </button>
+                                    <button class="btn btn-white fw-bold disabled opacity-100">{{quantity}}</button>
+                                    <button class="btn btn-light" (click)="quantity = quantity + 1">+</button>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1">
+                                <h6 class="fw-bold mb-1 fs-5 text-dark">{{product.productName}}</h6>
+                                <p class="text-muted small mb-2 truncate-text">{{product.description}}</p>
+                                <div class="d-flex align-items-center gap-2 mb-2">
+                                    <span class="text-amazon-orange fw-bold fs-5">₹{{product.price}}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Cart Items Display -->
+                        <div *ngIf="isCartCheckout" class="cart-items-review">
+                            <div *ngFor="let item of cartItems"
+                                class="d-flex align-items-center gap-3 mb-3 pb-3 border-bottom last-border-0">
+                                <img [src]="'http://localhost:3000/uploads/' + item.imageUrl" class="rounded-2 border"
+                                    style="width: 60px; height: 60px; object-fit: cover;">
+                                <div class="flex-grow-1">
+                                    <h6 class="fw-bold mb-0 small">{{item.productName}}</h6>
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <small class="text-muted">Qty: {{item.quantity}}</small>
+                                        <span class="fw-bold small text-success">₹{{item.price * item.quantity}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Delivery Speed Selection (Step 2 Only) -->
+                        <div *ngIf="checkoutStep === 2" class="mt-3 pt-3 border-top">
+                            <h6 class="fw-bold small mb-3">Choose your delivery speed:</h6>
+                            <div class="d-flex flex-column gap-2">
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="speed" id="std" value="standard"
+                                        [(ngModel)]="deliverySpeed" checked>
+                                    <label class="form-check-label fw-bold small" for="std">
+                                        {{deliveryDate | date:'EEEE, d MMM'}}
+                                        <div class="text-success fw-normal">FREE Delivery</div>
+                                    </label>
+                                </div>
+                                <div class="form-check">
+                                    <input class="form-check-input" type="radio" name="speed" id="fast" value="fast"
+                                        [(ngModel)]="deliverySpeed">
+                                    <label class="form-check-label fw-bold small" for="fast">
+                                        Tomorrow, {{tomorrowDate | date:'d MMM'}}
+                                        <div class="text-muted fw-normal">₹79.00 One-Day Delivery</div>
+                                    </label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Final Place Order Area (Step 2 Only) -->
+                <div class="checkout-card shadow-sm p-4 d-flex align-items-center gap-4" *ngIf="checkoutStep === 2">
+                    <button class="btn btn-amazon-yellow btn-lg px-5 fw-bold shadow-sm rounded-pill"
+                        (click)="initiateOrder()" [disabled]="placing">
+                        {{selectedPaymentMethod === 'cod' ? 'Place Order' : 'Pay Now'}}
+                    </button>
+                    <div>
+                        <h5 class="fw-bold text-amazon-orange mb-0">Order Total: ₹{{getTotal()}}</h5>
+                        <p class="text-muted small mb-0 mt-1">Simulated transaction for project demonstration.</p>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Right Sidebar: Order Summary -->
+            <div class="col-lg-4">
+                <div class="order-summary-sidebar shadow-sm">
+                    <button class="btn btn-amazon-yellow w-100 py-2 fw-bold mb-1 shadow-sm rounded-pill"
+                        *ngIf="checkoutStep === 1" [disabled]="!shippingAddress || !selectedPaymentMethod"
+                        (click)="nextStep()">
+                        Continue
+                    </button>
+                    <button class="btn btn-amazon-yellow w-100 py-2 fw-bold mb-1 shadow-sm rounded-pill"
+                        *ngIf="checkoutStep === 2" [disabled]="placing" (click)="initiateOrder()">
+                        {{selectedPaymentMethod === 'cod' ? 'Place your order' : 'Proceed to Payment'}}
+                    </button>
+
+                    <p class="text-center x-small text-muted mb-3 mt-2" style="font-size: 0.72rem;">Review
+                        your order
+                        details below.</p>
+
+                    <div class="border-top pt-3">
+                        <h6 class="fw-bold mb-3 small text-uppercase letter-spacing-1">Order Summary</h6>
+                        <div class="summary-row">
+                            <span>Items:</span>
+                            <span>₹{{getSubtotal()}}</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>GST (18%):</span>
+                            <span>₹{{getGST()}}</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Delivery:</span>
+                            <span [class.text-success]="getShippingFee() === 0">₹{{getShippingFee()}}.00</span>
+                        </div>
+                        <div class="summary-row" *ngIf="selectedPaymentMethod === 'cod'">
+                            <span>COD Service Fee:</span>
+                            <span>₹14.00</span>
+                        </div>
+
+                        <div class="total-row mt-3">
+                            <span>Order Total:</span>
+                            <span>₹{{getTotal()}}</span>
+                        </div>
+
+                        <div class="bg-success-subtle p-2 rounded small text-success text-center mt-3"
+                            *ngIf="getShippingFee() === 0">
+                            <i class="bi bi-gift me-1"></i> You saved ₹79 on delivery!
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- PAYMENT SIMULATION MODAL -->
+<div class="payment-modal-backdrop" *ngIf="showPaymentModal">
+    <div class="payment-modal shadow-lg">
+        <div class="modal-header border-bottom p-3 d-flex justify-content-between align-items-center">
+            <h5 class="mb-0 fw-bold">
+                <i class="bi bi-shield-check text-success me-2"></i>
+                {{selectedPaymentMethod === 'upi' ? 'UPI Simulation' : 'Card Simulation'}}
+            </h5>
+            <button class="btn-close" (click)="closePaymentModal()" [disabled]="paymentSubmitting"></button>
+        </div>
+
+        <div class="modal-body p-4 text-center">
+            <!-- Simulated Loading -->
+            <div *ngIf="paymentSubmitting" class="py-5">
+                <div class="spinner-border text-success mb-3" role="status" style="width: 3rem; height: 3rem;"></div>
+                <h6 class="fw-bold">Processing Transaction...</h6>
+                <p class="text-muted small">Please do not refresh or close the window.</p>
+            </div>
+
+            <!-- Simulated Success -->
+            <div *ngIf="paymentSuccess" class="py-5 animate-success">
+                <div class="success-icon mb-3">
+                    <i class="bi bi-check-circle-fill text-success" style="font-size: 4rem;"></i>
+                </div>
+                <h5 class="fw-bold text-success">Payment Successful!</h5>
+                <p class="text-muted">Finalizing your order...</p>
+            </div>
+
+            <!-- Payment Content -->
+            <div *ngIf="!paymentSubmitting && !paymentSuccess">
+                <!-- UPI SIM -->
+                <div *ngIf="selectedPaymentMethod === 'upi'">
+                    <p class="mb-4">Scan the QR code below using any UPI app to pay
+                        <strong>₹{{getTotal()}}</strong>
+                    </p>
+                    <div class="qr-container mb-4 text-center">
+                        <img src="upi_payment_qr.jpg" class="img-fluid border p-2 rounded shadow-sm mx-auto"
+                            alt="Your UPI QR Code" style="max-height: 350px; width: auto; display: block;">
+                    </div>
+                    <div class="alert alert-success py-2 small shadow-sm">
+                        <i class="bi bi-check-circle-fill me-2"></i>
+                        Personal UPI ID: <strong>thiruselvamksp&#64;oksbi</strong>
+                    </div>
+                </div>
+
+                <!-- CARD SIM -->
+                <div *ngIf="selectedPaymentMethod === 'card'">
+                    <p class="text-start mb-3 small fw-bold">Enter Card Details</p>
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label class="small text-muted d-block text-start mb-1">Card Number</label>
+                            <input type="text" class="form-control rounded-3" placeholder="1234 5678 1234 5678"
+                                [ngModel]="cardNumber" (input)="formatCardNumber($event)" maxlength="16"
+                                inputmode="numeric">
+                        </div>
+                        <div class="col-12">
+                            <label class="small text-muted d-block text-start mb-1">Card Holder Name</label>
+                            <input type="text" class="form-control rounded-3 text-uppercase" placeholder="FULL NAME"
+                                [ngModel]="cardName" (input)="formatCardName($event)">
+                        </div>
+                        <div class="col-6">
+                            <label class="small text-muted d-block text-start mb-1">Expiry Date</label>
+                            <input type="text" class="form-control rounded-3" placeholder="MM/YY" [ngModel]="cardExpiry"
+                                (input)="formatExpiry($event)" maxlength="5">
+                        </div>
+                        <div class="col-6">
+                            <label class="small text-muted d-block text-start mb-1">CVV</label>
+                            <input type="password" class="form-control rounded-3" placeholder="123" [ngModel]="cardCVV"
+                                (input)="formatCVV($event)" maxlength="3" inputmode="numeric">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="d-grid mt-4">
+                    <button class="btn btn-success btn-lg rounded-pill fw-bold shadow-sm"
+                        (click)="confirmSimulatedPayment()">
+                        Complete Payment
+                    </button>
+                </div>
+                <p class="text-center mt-3 x-small text-muted">
+                    Total to pay: <strong>₹{{getTotal()}}</strong>
+                </p>
+            </div>
+        </div>
+    </div>
+</div>

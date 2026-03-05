@@ -1,0 +1,91 @@
+<div class="container py-5 mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h2 class="fw-bold text-success">
+      <i class="bi bi-bag-check me-2"></i> My Orders
+    </h2>
+    <span class="badge bg-success p-2 px-3 rounded-pill">{{ orders.length }} Total Orders</span>
+  </div>
+
+  <div *ngIf="loading" class="text-center py-5">
+    <div class="spinner-border text-success" role="status"></div>
+  </div>
+
+  <div *ngIf="!loading && orders.length === 0" class="card border-0 shadow-sm p-5 text-center rounded-4">
+    <div class="card-body">
+      <i class="bi bi-cart-x display-1 text-muted"></i>
+      <h4 class="mt-4 fw-bold">No orders found</h4>
+      <p class="text-muted">
+        You haven't placed any orders yet. Start shopping today!
+      </p>
+      <button routerLink="/products" class="btn btn-success mt-2 rounded-pill px-4">
+        Browse Products
+      </button>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="!loading && orders.length > 0">
+    <div class="col-12" *ngFor="let order of orders" class="mb-4">
+      <div class="card border-0 shadow-sm rounded-4 overflow-hidden">
+        <div class="row g-0">
+          <div class="col-md-2 bg-light d-flex align-items-center justify-content-center p-3">
+            <i class="bi bi-box-seam display-3 text-success"></i>
+          </div>
+          <div class="col-md-10">
+            <div class="card-body p-4">
+              <div class="d-flex justify-content-between align-items-start mb-2">
+                <div>
+                  <h5 class="fw-bold mb-1">
+                    {{ order.productId?.productName || 'Product Title' }}
+                  </h5>
+                  <p class="text-muted small mb-0">
+                    Order ID: <span class="text-success fw-bold">{{ order.orderId || order._id }}</span> | Date:
+                    {{ order.createdAt | date: 'mediumDate' }}
+                  </p>
+                </div>
+                <div class="d-flex flex-column align-items-end gap-1">
+                  <span class="badge" [ngClass]="{
+                      'bg-info': order.orderStatus === 'Placed',
+                      'bg-warning text-dark': order.orderStatus === 'Processing',
+                      'bg-primary': order.orderStatus === 'Shipped',
+                      'bg-success': order.orderStatus === 'Delivered',
+                      'bg-secondary': !order.orderStatus
+                    }">{{ order.orderStatus || 'Pending' }}</span>
+                  <span class="badge rounded-pill" [ngClass]="{
+                    'bg-success-subtle text-success border border-success': order.paymentStatus === 'SUCCESS',
+                    'bg-danger-subtle text-danger border border-danger': order.paymentStatus === 'FAILED',
+                    'bg-warning-subtle text-warning-emphasis border border-warning': order.paymentStatus === 'PENDING'
+                  }" style="font-size: 0.65rem;">{{ order.paymentStatus || 'UNPAID' }}</span>
+                </div>
+              </div>
+              <hr class="my-3 opacity-10" />
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="row g-4 flex-grow-1">
+                  <div class="col-auto">
+                    <p class="mb-0 text-muted small">Quantity</p>
+                    <p class="fw-bold mb-0">x {{ order.quantity }}</p>
+                  </div>
+                  <div class="col-auto">
+                    <p class="mb-0 text-muted small">Total Paid</p>
+                    <p class="fw-bold text-success mb-0">
+                      Rs. {{ order.totalAmount }}
+                    </p>
+                  </div>
+                  <div class="col-auto">
+                    <p class="mb-0 text-muted small">Payment</p>
+                    <p class="fw-bold mb-0 text-uppercase small">
+                      {{ order.paymentMethod }}
+                    </p>
+                  </div>
+                </div>
+                <button [routerLink]="['/products', order.productId?._id]"
+                  class="btn btn-link text-success text-decoration-none fw-bold p-0">
+                  Buy Again
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

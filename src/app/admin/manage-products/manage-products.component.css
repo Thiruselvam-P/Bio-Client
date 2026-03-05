@@ -1,0 +1,83 @@
+.manage-products-container {
+    background: #f8fafc;
+    min-height: 100vh;
+}
+
+.category-header {
+    border-left: 5px solid #144d37;
+    transition: transform 0.2s ease;
+}
+
+.category-header:hover {
+    transform: translateX(5px);
+}
+
+.bg-gradient-green {
+    background: linear-gradient(135deg, #144d37 0%, #2f8f77 100%);
+}
+
+.btn-add-product {
+    background: #144d37;
+    color: white;
+    transition: all 0.3s ease;
+}
+
+.btn-add-product:hover {
+    background: #0d3320;
+    color: white;
+    transform: scale(1.05);
+}
+
+.product-admin-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.product-admin-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08) !important;
+}
+
+.availability-badge {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(20, 77, 55, 0.9);
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 4px 12px;
+    border-radius: 50px;
+    backdrop-filter: blur(4px);
+    z-index: 10;
+}
+
+.availability-badge.out-of-stock {
+    background: rgba(220, 53, 69, 0.9);
+}
+
+.breadcrumb-item a:hover {
+    color: #0d3320 !important;
+    text-decoration: underline !important;
+}
+
+.btn-outline-primary {
+    border-color: #3b82f6;
+    color: #2563eb;
+}
+
+.btn-outline-primary:hover {
+    background-color: #2563eb;
+    border-color: #2563eb;
+    color: white;
+}
+
+.btn-outline-danger {
+    border-color: #ef4444;
+    color: #dc2626;
+}
+
+.btn-outline-danger:hover {
+    background-color: #dc2626;
+    border-color: #dc2626;
+    color: white;
+}

@@ -1,0 +1,96 @@
+<div class="register-page">
+
+    <!-- Animated background circles -->
+    <div class="bg-shape shape1"></div>
+    <div class="bg-shape shape2"></div>
+    <div class="bg-shape shape3"></div>
+
+    <div class="container">
+        <div class="row justify-content-center align-items-center min-vh-100">
+
+            <div class="col-lg-5 col-md-7">
+
+                <div class="register-card">
+
+                    <div class="text-center mb-4">
+                        <h2 class="title">
+                            Fresh Bio
+                        </h2>
+                        <p class="subtitle">Create your account</p>
+                    </div>
+
+                    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+
+                        <!-- Name -->
+                        <div class="input-group-modern">
+                            <input type="text"
+                                   formControlName="name"
+                                   required>
+                            <label>Full Name</label>
+                        </div>
+
+                        <!-- Email -->
+                        <div class="input-group-modern">
+                            <input type="email"
+                                   formControlName="email"
+                                   required>
+                            <label>Email Address</label>
+                        </div>
+
+                        <!-- Phone -->
+                        <div class="input-group-modern">
+                            <input type="tel"
+                                   maxlength="10"
+                                   formControlName="phone"
+                                   (keypress)="allowOnlyNumbers($event)"
+                                   (paste)="preventPaste($event)"
+                                   required>
+                            <label>Phone Number</label>
+                        </div>
+
+                        <!-- Password -->
+                        <div class="input-group-modern">
+                            <input type="password"
+                                   formControlName="password"
+                                   required>
+                            <label>Password</label>
+                        </div>
+
+                        <!-- Role -->
+                        <div class="mb-4">
+                            <select class="role-select" formControlName="role">
+                                <option value="USER">Customer</option>
+                                <option value="ADMIN">Administrator</option>
+                            </select>
+                        </div>
+
+                        <!-- Button -->
+                        <button type="submit"
+                                class="register-btn"
+                                [disabled]="registerForm.invalid || loading">
+
+                            <span *ngIf="loading"
+                                  class="spinner-border spinner-border-sm me-2"></span>
+
+                            Create Account
+                        </button>
+
+                        <div *ngIf="error" class="error-box">
+                            {{error}}
+                        </div>
+
+                    </form>
+
+                    <div class="login-text">
+                        Already have an account?
+                        <a routerLink="/login">Sign in</a>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
