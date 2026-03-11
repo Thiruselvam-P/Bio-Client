@@ -266,10 +266,12 @@
                 <span class="pcard-badge">Fresh</span>
                 <img
                   [src]="product.imageUrl ? 'http://localhost:3000/uploads/' + product.imageUrl : 'https://images.unsplash.com/photo-1542838132-92c53300491e?ixlib=rb-4.0.3&auto=format&fit=crop&w=400&q=80'"
-                  [alt]="product.productName" class="pcard-img">
+                  [alt]="product.productName" class="pcard-img" style="cursor: pointer;"
+                  [routerLink]="['/products', product._id]">
               </div>
               <div class="pcard-body">
-                <h6 class="pcard-name">{{ product.productName }}</h6>
+                <h6 class="pcard-name" style="cursor: pointer;" [routerLink]="['/products', product._id]">{{
+                  product.productName }}</h6>
                 <div class="pcard-stars">
                   <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                   <i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
@@ -278,6 +280,8 @@
                 <div class="pcard-price-row">
                   <span class="pcard-price">₹{{ product.price }}</span>
                   <span class="pcard-original" *ngIf="product.price">₹{{ product.price + 40 }}</span>
+                  <span class="text-success fw-bold" style="font-size: 0.85rem;" *ngIf="product.price">{{ (40 /
+                    (product.price + 40) * 100) | number:'1.0-0' }}% off</span>
                 </div>
                 <button class="pcard-btn" (click)="addToCart(product)">
                   <i class="bi bi-bag-plus me-1"></i> Add to Cart
@@ -312,11 +316,13 @@
               <div class="pcard-img-wrap">
                 <span class="pcard-badge">Eco</span>
                 <img [src]="product.imageUrl ? 'http://localhost:3000/uploads/' + product.imageUrl : category.fallback"
-                  [alt]="product.productName" class="pcard-img">
+                  [alt]="product.productName" class="pcard-img" style="cursor: pointer;"
+                  [routerLink]="['/products', product._id]">
               </div>
               <div class="pcard-body">
                 <p class="pcard-category">{{ category.title }}</p>
-                <h6 class="pcard-name">{{ product.productName }}</h6>
+                <h6 class="pcard-name" style="cursor: pointer;" [routerLink]="['/products', product._id]">{{
+                  product.productName }}</h6>
                 <div class="pcard-stars">
                   <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                   <i class="bi bi-star-fill"></i><i class="bi bi-star-half"></i>
@@ -325,6 +331,8 @@
                 <div class="pcard-price-row">
                   <span class="pcard-price">₹{{ product.price }}</span>
                   <span class="pcard-original" *ngIf="product.price">₹{{ product.price + 40 }}</span>
+                  <span class="text-success fw-bold" style="font-size: 0.85rem;" *ngIf="product.price">{{ (40 /
+                    (product.price + 40) * 100) | number:'1.0-0' }}% off</span>
                 </div>
                 <button class="pcard-btn" (click)="addToCart(product)">
                   <i class="bi bi-bag-plus me-1"></i> Add to Cart

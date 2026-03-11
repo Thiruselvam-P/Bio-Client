@@ -36,7 +36,10 @@ export class ProductDetailsComponent implements OnInit {
           this.product = data;
           this.loading = false;
         },
-        error: () => this.router.navigate(['/products'])
+        error: (err) => {
+          console.error('Error fetching product details:', err);
+          this.router.navigate(['/products']);
+        }
       });
     }
   }

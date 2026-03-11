@@ -54,14 +54,13 @@
         <div class="position-relative">
           @if (p.imageUrl) {
           <img [src]="'http://localhost:3000/uploads/' + p.imageUrl" class="card-img-top rounded-top-4"
-            alt="{{ p.productName }}" style="height: 180px; object-fit: cover; cursor: zoom-in;"
-            (click)="openModal('http://localhost:3000/uploads/' + p.imageUrl)" />
+            alt="{{ p.productName }}" style="height: 180px; object-fit: cover; cursor: pointer;"
+            [routerLink]="['/products', p._id]" />
           } @else {
           <img
             src="https://images.unsplash.com/photo-1610348725531-843dff563e2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80"
             class="card-img-top rounded-top-4" alt="{{ p.productName }}"
-            style="height: 180px; object-fit: cover; cursor: zoom-in;"
-            (click)="openModal('https://images.unsplash.com/photo-1610348725531-843dff563e2c?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=80')" />
+            style="height: 180px; object-fit: cover; cursor: pointer;" [routerLink]="['/products', p._id]" />
           }
           <span class="badge bg-success position-absolute top-0 start-0 m-3 shadow-sm">{{ p.category }}</span>
         </div>
@@ -72,14 +71,20 @@
               <span class="symbol" style="font-size: 0.8rem; margin-top: 3px;">₹</span>
               <span class="amount" style="font-size: 1.4rem;">{{ p.price }}</span>
             </div>
-            <div class="original-price" *ngIf="p.price"
-              style="font-size: 0.75rem; margin-top: -3px; margin-bottom: 2px;">
-              ₹{{ p.price + 300 }}
+            <div class="d-flex align-items-center gap-2 mb-1" *ngIf="p.price" style="margin-top: -3px;">
+              <div class="original-price mb-0" style="font-size: 0.75rem;">
+                ₹{{ p.price + 300 }}
+              </div>
+              <span class="text-success fw-bold" style="font-size: 0.75rem;">
+                {{ (300 / (p.price + 300) * 100) | number:'1.0-0' }}% off
+              </span>
             </div>
           </div>
 
           <!-- 2. Product name -->
-          <h6 class="fw-bold mb-0 text-truncate" style="color: #1a1a1a; font-size: 0.85rem; letter-spacing: -0.2px;">
+          <h6 class="fw-bold mb-0 text-truncate"
+            style="color: #1a1a1a; font-size: 0.85rem; letter-spacing: -0.2px; cursor: pointer;"
+            [routerLink]="['/products', p._id]">
             {{ p.productName }}
           </h6>
 
