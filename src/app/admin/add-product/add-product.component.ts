@@ -40,7 +40,7 @@ export class AddProductComponent implements OnInit {
       this.productService.getProduct(id).subscribe(data => {
         this.productForm.patchValue(data);
         if (data.imageUrl) {
-          this.imagePreview = `http://localhost:3000/uploads/${data.imageUrl}`;
+          this.imagePreview = `https://bio-backend.onrender.com/uploads/${data.imageUrl}`;
         }
       });
     }

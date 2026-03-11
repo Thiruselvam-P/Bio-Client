@@ -24,7 +24,8 @@
                     <div class="d-flex align-items-center">
                         <!-- Image -->
                         <div class="flex-shrink-0" style="width: 100px; height: 100px;">
-                            <img *ngIf="item.imageUrl" [src]="'http://localhost:3000/uploads/' + item.imageUrl"
+                            <img *ngIf="item.imageUrl"
+                                [src]="'https://bio-backend.onrender.com/uploads/' + item.imageUrl"
                                 class="img-fluid rounded-3 w-100 h-100 object-fit-cover" alt="{{item.productName}}">
                             <div *ngIf="!item.imageUrl"
                                 class="bg-light rounded-3 d-flex align-items-center justify-content-center w-100 h-100">
