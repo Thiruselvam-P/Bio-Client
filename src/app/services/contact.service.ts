@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class ContactService {
-  private apiUrl = 'https://bio-backend.onrender.com/contact';
+  private apiUrl = 'https://bio-backend-6agg.onrender.com/contact';
 
   constructor(private http: HttpClient) { }
 

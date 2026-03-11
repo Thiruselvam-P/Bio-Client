@@ -7,7 +7,7 @@ import { Order } from '../models/models';
   providedIn: 'root'
 })
 export class OrderService {
-  private apiUrl = 'https://bio-backend.onrender.com/orders';
+  private apiUrl = 'https://bio-backend-6agg.onrender.com/orders';
 
   constructor(private http: HttpClient) { }
 

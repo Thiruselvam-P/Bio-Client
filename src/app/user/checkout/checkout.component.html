@@ -151,7 +151,7 @@
                         <div *ngIf="!isCartCheckout && product"
                             class="d-flex align-items-start gap-4 flex-wrap flex-md-nowrap mb-4">
                             <div class="text-center">
-                                <img [src]="'https://bio-backend.onrender.com/uploads/' + product.imageUrl"
+                                <img [src]="'https://bio-backend-6agg.onrender.com/uploads/' + product.imageUrl"
                                     class="rounded-3 shadow-sm border mb-2"
                                     style="width: 120px; height: 120px; object-fit: cover;">
                                 <div class="btn-group btn-group-sm w-100 border rounded-3 overflow-hidden shadow-xs">
@@ -174,7 +174,7 @@
                         <div *ngIf="isCartCheckout" class="cart-items-review">
                             <div *ngFor="let item of cartItems"
                                 class="d-flex align-items-center gap-3 mb-3 pb-3 border-bottom last-border-0">
-                                <img [src]="'https://bio-backend.onrender.com/uploads/' + item.imageUrl"
+                                <img [src]="'https://bio-backend-6agg.onrender.com/uploads/' + item.imageUrl"
                                     class="rounded-2 border" style="width: 60px; height: 60px; object-fit: cover;">
                                 <div class="flex-grow-1">
                                     <h6 class="fw-bold mb-0 small">{{item.productName}}</h6>

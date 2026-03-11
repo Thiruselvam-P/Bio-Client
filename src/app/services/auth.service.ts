@@ -8,7 +8,7 @@ import { User } from '../models/models';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'https://bio-backend.onrender.com/auth';
+  private apiUrl = 'https://bio-backend-6agg.onrender.com/auth';
   private currentUserSubject: BehaviorSubject<User | null>;
   public currentUser: Observable<User | null>;
 

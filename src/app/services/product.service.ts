@@ -7,7 +7,7 @@ import { Product } from '../models/models';
   providedIn: 'root'
 })
 export class ProductService {
-  private apiUrl = 'https://bio-backend.onrender.com/products';
+  private apiUrl = 'https://bio-backend-6agg.onrender.com/products';
 
   constructor(private http: HttpClient) { }
 
