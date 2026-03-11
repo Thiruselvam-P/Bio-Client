@@ -23,54 +23,36 @@
 
                         <!-- Name -->
                         <div class="input-group-modern">
-                            <input type="text"
-                                   formControlName="name"
-                                   required>
+                            <input type="text" formControlName="name" required>
                             <label>Full Name</label>
                         </div>
 
                         <!-- Email -->
                         <div class="input-group-modern">
-                            <input type="email"
-                                   formControlName="email"
-                                   required>
+                            <input type="email" formControlName="email" required>
                             <label>Email Address</label>
                         </div>
 
                         <!-- Phone -->
                         <div class="input-group-modern">
-                            <input type="tel"
-                                   maxlength="10"
-                                   formControlName="phone"
-                                   (keypress)="allowOnlyNumbers($event)"
-                                   (paste)="preventPaste($event)"
-                                   required>
+                            <input type="tel" maxlength="10" formControlName="phone"
+                                (keypress)="allowOnlyNumbers($event)" (paste)="preventPaste($event)" required>
                             <label>Phone Number</label>
                         </div>
 
                         <!-- Password -->
                         <div class="input-group-modern">
-                            <input type="password"
-                                   formControlName="password"
-                                   required>
+                            <input type="password" formControlName="password" required>
                             <label>Password</label>
                         </div>
 
-                        <!-- Role -->
-                        <div class="mb-4">
-                            <select class="role-select" formControlName="role">
-                                <option value="USER">Customer</option>
-                                <option value="ADMIN">Administrator</option>
-                            </select>
-                        </div>
+                        <!-- Role (Hidden, defaults to USER) -->
+                        <input type="hidden" formControlName="role">
 
                         <!-- Button -->
-                        <button type="submit"
-                                class="register-btn"
-                                [disabled]="registerForm.invalid || loading">
+                        <button type="submit" class="register-btn" [disabled]="registerForm.invalid || loading">
 
-                            <span *ngIf="loading"
-                                  class="spinner-border spinner-border-sm me-2"></span>
+                            <span *ngIf="loading" class="spinner-border spinner-border-sm me-2"></span>
 
                             Create Account
                         </button>
