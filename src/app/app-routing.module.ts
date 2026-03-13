@@ -5,6 +5,8 @@ import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { ProductListComponent } from './user/product-list/product-list.component';
 import { ProductDetailsComponent } from './user/product-details/product-details.component';
+import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
+import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
 import { MyOrdersComponent } from './user/my-orders/my-orders.component';
 import { AdminDashboardComponent } from './admin/dashboard/dashboard.component';
 import { ManageProductsComponent } from './admin/manage-products/manage-products.component';
@@ -24,6 +26,8 @@ const routes: Routes = [
     { path: 'home', component: HomeComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
+    { path: 'forgot-password', component: ForgotPasswordComponent },
+    { path: 'reset-password', component: ResetPasswordComponent },
     { path: 'products', component: ProductListComponent },
     { path: 'products/:id', component: ProductDetailsComponent },
     { path: 'services', component: ServicesComponent },

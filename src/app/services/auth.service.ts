@@ -54,4 +54,12 @@ export class AuthService {
   getUserName(): string | null {
     return this.currentUserValue?.name || null;
   }
+
+  forgotPassword(email: string): Observable<any> {
+    return this.http.post('http://localhost:3000/auth/forgot-password', { email });
+  }
+
+  resetPassword(data: any): Observable<any> {
+    return this.http.post('http://localhost:3000/auth/reset-password', data);
+  }
 }

@@ -83,8 +83,20 @@
     color:white;
 }
 
-.register-text a{
-    color:#fff;
-    font-weight:600;
-    text-decoration:underline;
+.register-text a {
+    color: #fff;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+.forgot-password-link {
+    color: white;
+    font-size: 0.85rem;
+    text-decoration: none;
+    opacity: 0.8;
+}
+
+.forgot-password-link:hover {
+    opacity: 1;
+    text-decoration: underline;
 }
