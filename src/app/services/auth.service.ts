@@ -8,7 +8,9 @@ import { User } from '../models/models';
   providedIn: 'root'
 })
 export class AuthService {
-  private apiUrl = 'https://bio-backend-6agg.onrender.com/auth';
+  private baseUrl = 'https://bio-backend-6agg.onrender.com';
+  private apiUrl = `${this.baseUrl}/auth`;
+  private userUrl = `${this.baseUrl}/users`;
   private currentUserSubject: BehaviorSubject<User | null>;
   public currentUser: Observable<User | null>;
 
@@ -56,10 +58,26 @@ export class AuthService {
   }
 
   forgotPassword(email: string): Observable<any> {
-    return this.http.post('http://localhost:3000/auth/forgot-password', { email });
+    return this.http.post(`${this.apiUrl}/forgot-password`, { email });
   }
 
   resetPassword(data: any): Observable<any> {
-    return this.http.post('http://localhost:3000/auth/reset-password', data);
+    return this.http.post(`${this.apiUrl}/reset-password`, data);
+  }
+
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(this.userUrl);
+  }
+
+  deleteUser(userId: string): Observable<any> {
+    return this.http.delete(`${this.userUrl}/${userId}`);
+  }
+
+  updateUser(userId: string, updateData: any): Observable<any> {
+    return this.http.patch(`${this.userUrl}/${userId}`, updateData);
+  }
+
+  toggleUserBlock(userId: string, isActive: boolean): Observable<any> {
+    return this.updateUser(userId, { isActive });
   }
 }

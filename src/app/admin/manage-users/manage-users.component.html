@@ -1,0 +1,110 @@
+<div class="admin-container">
+    <div class="header-section">
+        <h1 style="color: rgb(16, 92, 40);"   >User Management</h1>
+        <p class="subtitle">Monitor and manage all registered users</p>
+    </div>
+
+    <div class="content-card glass-panel">
+        <div *ngIf="loading && !showOrdersModal" class="loader-container">
+            <div class="spinner"></div>
+            <p>Loading users...</p>
+        </div>
+
+        <div *ngIf="!loading || showOrdersModal" class="table-container">
+            <table class="modern-table">
+                <thead>
+                    <tr>
+                        <th>User Info</th>
+                        <th>Email</th>
+                        <th>Phone</th>
+                        <th>Role</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let user of users" [class.blocked]="user.isActive === false">
+                        <td>
+                            <div class="user-info">
+                                <div class="avatar">{{ user.name.charAt(0).toUpperCase() }}</div>
+                                <span>{{ user.name }}</span>
+                            </div>
+                        </td>
+                        <td>{{ user.email }}</td>
+                        <td>{{ user.phone || 'N/A' }}</td>
+                        <td>
+                            <span class="badge" [ngClass]="user.role === 'ADMIN' ? 'badge-admin' : 'badge-user'">
+                                {{ user.role }}
+                            </span>
+                        </td>
+                        <td>
+                            <span class="status-indicator" [ngClass]="user.isActive === false ? 'blocked' : 'active'">
+                                {{ user.isActive === false ? 'Blocked' : 'Active' }}
+                            </span>
+                        </td>
+                        <td>
+                            <div class="btn-group">
+                                <button class="btn btn-view" (click)="viewOrders(user)" title="View Orders">
+                                    <i class="bi bi-eye"></i> Orders
+                                </button>
+                                <button *ngIf="user.role !== 'ADMIN'" 
+                                        class="btn" 
+                                        [ngClass]="user.isActive === false ? 'btn-unblock' : 'btn-block'"
+                                        (click)="toggleBlock(user)">
+                                    <i [class]="user.isActive === false ? 'bi bi-unlock' : 'bi bi-slash-circle'"></i>
+                                    {{ user.isActive === false ? 'Unblock' : 'Block' }}
+                                </button>
+                                <button *ngIf="user.role !== 'ADMIN'" 
+                                        class="btn btn-delete" 
+                                        (click)="deleteUser(user._id || user.id)" title="Delete User">
+                                    <i class="bi bi-trash"></i>
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <div *ngIf="users.length === 0 && !loading" class="empty-state">
+                <i class="bi bi-people"></i>
+                <p>No users found.</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Orders Modal -->
+    <div class="modal-overlay" *ngIf="showOrdersModal">
+        <div class="modal-content glass-panel animated fadeInDown">
+            <div class="modal-header">
+                <h2>Orders for {{ selectedUser?.name }}</h2>
+                <button class="close-btn" (click)="closeModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div *ngIf="loading" class="loader-container">
+                    <div class="spinner"></div>
+                </div>
+                
+                <div *ngIf="!loading && selectedUserOrders.length > 0" class="orders-list">
+                    <div class="order-card" *ngFor="let order of selectedUserOrders">
+                        <div class="order-header">
+                            <span class="order-id">ID: {{ order.orderId || order._id }}</span>
+                            <span class="order-date">{{ order.createdAt | date:'medium' }}</span>
+                        </div>
+                        <div class="order-details">
+                            <p><strong>Status:</strong> <span class="order-status" [attr.data-status]="order.orderStatus">{{ order.orderStatus }}</span></p>
+                            <p><strong>Total:</strong> ₹{{ order.totalAmount }}</p>
+                            <p><strong>Address:</strong> {{ order.shippingAddress }}</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div *ngIf="!loading && selectedUserOrders.length === 0" class="empty-modal">
+                    <p>This user has no orders yet.</p>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" (click)="closeModal()">Close</button>
+            </div>
+        </div>
+    </div>
+</div>

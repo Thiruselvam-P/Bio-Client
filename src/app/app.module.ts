@@ -20,6 +20,7 @@ import { AdminDashboardComponent } from './admin/dashboard/dashboard.component';
 import { ManageProductsComponent } from './admin/manage-products/manage-products.component';
 import { AddProductComponent } from './admin/add-product/add-product.component';
 import { ManageOrdersComponent } from './admin/manage-orders/manage-orders.component';
+import { ManageUsersComponent } from './admin/manage-users/manage-users.component';
 import { CheckoutComponent } from './user/checkout/checkout.component';
 import { CartComponent } from './user/cart/cart.component';
 
@@ -49,7 +50,8 @@ import { ResetPasswordComponent } from './auth/reset-password/reset-password.com
     CartComponent,
     ContactComponent,
     AboutComponent,
-    OrderSuccessComponent
+    OrderSuccessComponent,
+    ManageUsersComponent
   ],
   imports: [
     BrowserModule,

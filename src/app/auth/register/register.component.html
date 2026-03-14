@@ -44,6 +44,10 @@
                         <div class="input-group-modern">
                             <input type="password" formControlName="password" required>
                             <label>Password</label>
+                            <div class="field-hint" *ngIf="f['password'].touched && f['password'].errors">
+                                <small class="text-danger" *ngIf="f['password'].errors['required']">Password is required</small>
+                                <small class="text-danger" *ngIf="f['password'].errors['pattern']">Must be 8+ chars with uppercase, lowercase, number & special char</small>
+                            </div>
                         </div>
 
                         <!-- Role (Hidden, defaults to USER) -->

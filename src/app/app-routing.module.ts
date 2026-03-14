@@ -1,17 +1,19 @@
+// App routing configuration
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { HomeComponent } from './user/home/home.component';
 import { LoginComponent } from './auth/login/login.component';
 import { RegisterComponent } from './auth/register/register.component';
 import { ProductListComponent } from './user/product-list/product-list.component';
-import { ProductDetailsComponent } from './user/product-details/product-details.component';
 import { ForgotPasswordComponent } from './auth/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
+import { ProductDetailsComponent } from './user/product-details/product-details.component';
 import { MyOrdersComponent } from './user/my-orders/my-orders.component';
 import { AdminDashboardComponent } from './admin/dashboard/dashboard.component';
 import { ManageProductsComponent } from './admin/manage-products/manage-products.component';
 import { AddProductComponent } from './admin/add-product/add-product.component';
 import { ManageOrdersComponent } from './admin/manage-orders/manage-orders.component';
+import { ManageUsersComponent } from './admin/manage-users/manage-users.component';
 import { ServicesComponent } from './user/services/services.component';
 import { ContactComponent } from './user/contact/contact.component';
 import { CheckoutComponent } from './user/checkout/checkout.component';
@@ -48,6 +50,7 @@ const routes: Routes = [
     { path: 'admin/add-product', component: AddProductComponent, canActivate: [AdminGuard] },
     { path: 'admin/edit-product/:id', component: AddProductComponent, canActivate: [AdminGuard] },
     { path: 'admin/orders', component: ManageOrdersComponent, canActivate: [AdminGuard] },
+    { path: 'admin/users', component: ManageUsersComponent, canActivate: [AdminGuard] },
 
     { path: '**', redirectTo: '/home' }
 ];
